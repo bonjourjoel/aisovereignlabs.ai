@@ -17,6 +17,7 @@
             flex-direction: column;
             height: 100vh;
             text-rendering: optimizeLegibility;
+            overflow: hidden;
         }
 
         header {
@@ -45,29 +46,73 @@
         }
 
         .slogan {
-            font-size: 0.9rem;
+            font-size: 1.1rem; /* Augmenté */
             color: #888;
         }
 
         .bullets-container {
-            max-width: 600px;
-            text-align: left;
+            max-width: 650px;
+            width: 90%;
             list-style: none;
             padding: 0;
         }
 
-        .bullets-container li {
+        .bullet-item {
+            margin-bottom: 2.5rem;
+        }
+
+        .bullet-header {
+            display: flex;
+            align-items: center;
             font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
             color: #ccc;
             border-left: 2px solid #333;
             padding-left: 20px;
-            transition: border-color 0.3s ease;
         }
 
-        .bullets-container li:hover {
+        .help-btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 15px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #aaa; /* Plus visible à la base */
+            cursor: pointer;
+            border: 1px solid #444; /* Bordure plus marquée */
+            width: 26px;
+            height: 26px;
+            border-radius: 4px;
+            user-select: none;
+            transition: all 0.2s ease-in-out;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .help-btn:hover {
+            color: #ffffff;
             border-color: #ffffff;
+            background-color: #222;
+            box-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+
+        .explanation {
+            max-height: 0;
+            overflow: hidden;
+            font-size: 1rem; /* Augmenté */
+            color: #999;
+            padding-left: 22px;
+            margin-top: 0;
+            line-height: 1.6;
+            max-width: 580px;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.4s;
+            opacity: 0;
+        }
+
+        .explanation.visible {
+            max-height: 250px;
+            margin-top: 15px;
+            opacity: 1;
         }
 
         nav {
@@ -96,32 +141,65 @@
     </style>
     <script>
         function openContactEmail() {
-            // Anti-scraping technique
             const user = "joel";
             const domain = "aisovereignlabs";
             const tld = "ai";
             const fullAddress = user + "@" + domain + "." + tld;
-            
             const anchor = document.getElementById("contact-link");
             anchor.href = "mai" + "lto" + ":" + fullAddress;
             anchor.textContent = fullAddress;
+        }
+
+        function toggleHelp(id) {
+            const el = document.getElementById(id);
+            const isVisible = el.classList.contains('visible');
             
-            // On le laisse cliquer naturellement sur le nouveau href
+            document.querySelectorAll('.explanation').forEach(e => {
+                if (e.id !== id) e.classList.remove('visible');
+            });
+
+            if (isVisible) {
+                el.classList.remove('visible');
+            } else {
+                el.classList.add('visible');
+            }
         }
     </script>
 </head>
 <body>
     <header>
         <h1>AI Sovereign Labs</h1>
-        <p class="slogan">Engineering the post-human era.</p>
+        <p class="slogan">AI at the service of the sovereign enterprise.</p>
     </header>
 
     <main>
-        <ul class="bullets-container">
-            <li>The first sovereignty is the ability to read your own code.</li>
-            <li>The second sovereignty is the ability to hide your own code.</li>
-            <li>Be sovereign.</li>
-        </ul>
+        <div class="bullets-container">
+            <div class="bullet-item">
+                <div class="bullet-header">
+                    The first sovereignty is the ability to read your own code.
+                    <div class="help-btn" onclick="toggleHelp('exp1')">?</div>
+                </div>
+                <div id="exp1" class="explanation">
+                    AI shouldn't be a black box. If you cannot audit, understand, and verify the code generated for your infrastructure, you have surrendered intellectual control to the model provider.
+                </div>
+            </div>
+
+            <div class="bullet-item">
+                <div class="bullet-header">
+                    The second sovereignty is the ability to hide your own code.
+                    <div class="help-btn" onclick="toggleHelp('exp2')">?</div>
+                </div>
+                <div id="exp2" class="explanation">
+                    Your IP is your fortress. True sovereignty means processing your logic locally or in private environments, ensuring your proprietary source code never trains a third-party model.
+                </div>
+            </div>
+
+            <div class="bullet-item">
+                <div class="bullet-header" style="border-left-color: #ffffff; color: #fff;">
+                    Be sovereign.
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
