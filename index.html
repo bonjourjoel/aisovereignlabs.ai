@@ -12,18 +12,28 @@
             background-color: #0a0a0a;
             color: #e5e5e5;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
-            margin: 0;
             text-rendering: optimizeLegibility;
         }
 
-        .container {
+        header {
+            padding-top: 60px;
             text-align: center;
-            padding: 20px;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        footer {
+            padding-bottom: 60px;
+            text-align: center;
         }
 
         h1 {
@@ -34,10 +44,37 @@
             color: #ffffff;
         }
 
-        p {
+        .slogan {
             font-size: 0.9rem;
             color: #888;
-            margin-bottom: 2rem;
+        }
+
+        .bullets-container {
+            max-width: 600px;
+            text-align: left;
+            list-style: none;
+            padding: 0;
+        }
+
+        .bullets-container li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #ccc;
+            border-left: 2px solid #333;
+            padding-left: 20px;
+            transition: border-color 0.3s ease;
+        }
+
+        .bullets-container li:hover {
+            border-color: #ffffff;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
         }
 
         a {
@@ -48,6 +85,7 @@
             padding: 8px 16px;
             border-radius: 4px;
             transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         a:hover {
@@ -55,23 +93,42 @@
             color: #000000;
             border-color: #ffffff;
         }
-
-        .dot {
-            color: #333;
-            margin: 0 10px;
-        }
     </style>
+    <script>
+        function openContactEmail() {
+            // Anti-scraping technique
+            const user = "joel";
+            const domain = "aisovereignlabs";
+            const tld = "ai";
+            const fullAddress = user + "@" + domain + "." + tld;
+            
+            const anchor = document.getElementById("contact-link");
+            anchor.href = "mai" + "lto" + ":" + fullAddress;
+            anchor.textContent = fullAddress;
+            
+            // On le laisse cliquer naturellement sur le nouveau href
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>AI Sovereign Labs</h1>
-        <p>Engineering the post-human era.</p>
-        
+        <p class="slogan">Engineering the post-human era.</p>
+    </header>
+
+    <main>
+        <ul class="bullets-container">
+            <li>The first sovereignty is the ability to read your own code.</li>
+            <li>The second sovereignty is the ability to hide your own code.</li>
+            <li>Be sovereign.</li>
+        </ul>
+    </main>
+
+    <footer>
         <nav>
             <a href="https://ai-code.ai">Main Project: AICode</a>
-            <span class="dot">·</span>
-            <a href="mailto:joel@aisovereignlabs.ai">Contact</a>
+            <a id="contact-link" href="javascript:openContactEmail()">Contact</a>
         </nav>
-    </div>
+    </footer>
 </body>
 </html>
