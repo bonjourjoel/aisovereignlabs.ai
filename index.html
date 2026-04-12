@@ -66,7 +66,7 @@
 
         .bullet-header {
             display: flex;
-            align-items: center; /* Correction alignement vertical */
+            align-items: center;
             font-size: 1.1rem;
             color: #ccc;
             border-left: 2px solid #333;
@@ -97,13 +97,7 @@
             user-select: none;
             transition: all 0.2s ease-in-out;
             background: rgba(255, 255, 255, 0.05);
-            flex-shrink: 0; /* Empêche le bouton de s'écraser */
-        }
-
-        .help-btn:hover {
-            color: #ffffff;
-            border-color: #ffffff;
-            background-color: #222;
+            flex-shrink: 0;
         }
 
         .explanation {
@@ -143,10 +137,11 @@
             cursor: pointer;
         }
 
-        a:hover {
-            background-color: #ffffff;
-            color: #000000;
+        /* Style de hover commun pour .help-btn et les liens 'a' */
+        .help-btn:hover, a:hover {
+            color: #ffffff;
             border-color: #ffffff;
+            background-color: #222;
         }
     </style>
     <script>
