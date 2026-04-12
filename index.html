@@ -46,8 +46,10 @@
         }
 
         .slogan {
-            font-size: 1.1rem;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1rem;
             color: #888;
+            letter-spacing: 0.05em;
         }
 
         .bullets-container {
@@ -59,19 +61,20 @@
 
         .bullet-item {
             margin-bottom: 2.5rem;
+            cursor: default;
         }
 
         .bullet-header {
             display: flex;
-            align-items: center;
+            align-items: center; /* Correction alignement vertical */
             font-size: 1.1rem;
             color: #ccc;
             border-left: 2px solid #333;
             padding-left: 20px;
             transition: all 0.3s ease;
+            line-height: 1.2;
         }
 
-        /* Hover unifié pour tous les items */
         .bullet-item:hover .bullet-header {
             border-left-color: #ffffff;
             color: #ffffff;
@@ -94,6 +97,7 @@
             user-select: none;
             transition: all 0.2s ease-in-out;
             background: rgba(255, 255, 255, 0.05);
+            flex-shrink: 0; /* Empêche le bouton de s'écraser */
         }
 
         .help-btn:hover {
@@ -200,7 +204,11 @@
 
             <div class="bullet-item">
                 <div class="bullet-header">
-                    Be sovereign.
+                    Claim your sovereignty.
+                    <div class="help-btn" onclick="toggleHelp('exp3')">?</div>
+                </div>
+                <div id="exp3" class="explanation">
+                    Sovereignty is not a constraint, it is the ultimate leverage. By owning your intelligence and your infrastructure, you eliminate dependency and transform your software into an impregnable strategic asset.
                 </div>
             </div>
         </div>
