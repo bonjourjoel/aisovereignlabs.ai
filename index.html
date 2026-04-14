@@ -1,219 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>">
-    <meta property="og:title" content="AI Sovereign Labs">
-    <meta property="og:description" content="AI at the service of the sovereign enterprise.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>"
+    />
+    <meta property="og:title" content="AI Sovereign Labs" />
+    <meta
+      property="og:description"
+      content="AI at the service of the sovereign enterprise."
+    />
     <title>AI Sovereign Labs</title>
     <style>
-        body {
-            background-color: #0a0a0a;
-            color: #e5e5e5;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            text-rendering: optimizeLegibility;
-            overflow: hidden;
-        }
-
+      @media (max-width: 600px) {
         header {
-            padding-top: 60px;
-            text-align: center;
+          padding-top: 30px;
         }
-
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
         footer {
-            padding-bottom: 60px;
-            text-align: center;
+          padding-bottom: 30px;
         }
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
-        }
-
-        .slogan {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 1rem;
-            color: #888;
-            letter-spacing: 0.05em;
-        }
-
-        .bullets-container {
-            max-width: 650px;
-            width: 90%;
-            list-style: none;
-            padding: 0;
-        }
-
-        .bullet-item {
-            margin-bottom: 2.5rem;
-            cursor: default;
-        }
-
         .bullet-header {
-            display: flex;
-            align-items: center;
-            font-size: 1.1rem;
-            color: #ccc;
-            border-left: 2px solid #333;
-            padding-left: 20px;
-            transition: all 0.3s ease;
-            line-height: 1.2;
+          font-size: 1rem;
         }
-
-        .bullet-item:hover .bullet-header {
-            border-left-color: #ffffff;
-            color: #ffffff;
-        }
-
-        .help-btn {
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 15px;
-            font-family: "Courier New", Courier, monospace;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: #aaa;
-            cursor: pointer;
-            border: 1px solid #444;
-            width: 26px;
-            height: 26px;
-            border-radius: 4px;
-            user-select: none;
-            transition: all 0.2s ease-in-out;
-            background: rgba(255, 255, 255, 0.05);
-            flex-shrink: 0;
-        }
-
-        .explanation {
-            max-height: 0;
-            overflow: hidden;
-            font-size: 1rem;
-            color: #999;
-            padding-left: 22px;
-            margin-top: 0;
-            line-height: 1.6;
-            max-width: 580px;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.4s;
-            opacity: 0;
-        }
-
-        .explanation.visible {
-            max-height: 250px;
-            margin-top: 15px;
-            opacity: 1;
-        }
-
         nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
+          flex-direction: column;
+          gap: 10px;
         }
+      }
 
-        a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            border: 1px solid #333;
-            padding: 8px 16px;
-            border-radius: 4px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-        }
+      body {
+        background-color: #0a0a0a;
+        color: #e5e5e5;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Utilise min-height au lieu de height */
+        text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+        overflow-y: auto; /* Permet le scroll si le contenu dépasse */
+      }
 
-        /* Style de hover commun pour .help-btn et les liens 'a' */
-        .help-btn:hover, a:hover {
-            color: #ffffff;
-            border-color: #ffffff;
-            background-color: #222;
-        }
+      header {
+        padding-top: 60px;
+        text-align: center;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      footer {
+        padding-bottom: 60px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+        color: #ffffff;
+      }
+
+      .slogan {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
+        color: #888;
+        letter-spacing: 0.05em;
+      }
+
+      .bullets-container {
+        max-width: 650px;
+        width: 90%;
+        list-style: none;
+        padding: 0;
+      }
+
+      .bullet-item {
+        margin-bottom: 2.5rem;
+        cursor: default;
+      }
+
+      .bullet-header {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+        color: #ccc;
+        border-left: 2px solid #333;
+        padding-left: 20px;
+        transition: all 0.3s ease;
+        line-height: 1.2;
+      }
+
+      .bullet-item:hover .bullet-header {
+        border-left-color: #ffffff;
+        color: #ffffff;
+      }
+
+      .help-btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+        border: 1px solid #444;
+        width: 26px;
+        height: 26px;
+        border-radius: 4px;
+        user-select: none;
+        transition: all 0.2s ease-in-out;
+        background: rgba(255, 255, 255, 0.05);
+        flex-shrink: 0;
+      }
+
+      .explanation {
+        max-height: 0;
+        overflow: hidden;
+        font-size: 1rem;
+        color: #999;
+        padding-left: 22px;
+        margin-top: 0;
+        line-height: 1.6;
+        max-width: 580px;
+        transition:
+          max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          margin-top 0.4s;
+        opacity: 0;
+      }
+
+      .explanation.visible {
+        max-height: 250px;
+        margin-top: 15px;
+        opacity: 1;
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.85rem;
+        border: 1px solid #333;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+
+      /* Style de hover commun pour .help-btn et les liens 'a' */
+      .help-btn:hover,
+      a:hover {
+        color: #ffffff;
+        border-color: #ffffff;
+        background-color: #222;
+      }
     </style>
     <script>
-        function openContactEmail() {
-            const user = "joel";
-            const domain = "aisovereignlabs";
-            const tld = "ai";
-            const fullAddress = user + "@" + domain + "." + tld;
-            const anchor = document.getElementById("contact-link");
-            anchor.href = "mai" + "lto" + ":" + fullAddress;
-            anchor.textContent = fullAddress;
-        }
+      function openContactEmail() {
+        const user = "joel";
+        const domain = "aisovereignlabs";
+        const tld = "ai";
+        const fullAddress = user + "@" + domain + "." + tld;
+        const anchor = document.getElementById("contact-link");
+        anchor.href = "mai" + "lto" + ":" + fullAddress;
+        anchor.textContent = fullAddress;
+      }
 
-        function toggleHelp(id) {
-            const el = document.getElementById(id);
-            const isVisible = el.classList.contains('visible');
-            document.querySelectorAll('.explanation').forEach(e => {
-                if (e.id !== id) e.classList.remove('visible');
-            });
-            if (isVisible) {
-                el.classList.remove('visible');
-            } else {
-                el.classList.add('visible');
-            }
+      function toggleHelp(id) {
+        const el = document.getElementById(id);
+        const isVisible = el.classList.contains("visible");
+        document.querySelectorAll(".explanation").forEach((e) => {
+          if (e.id !== id) e.classList.remove("visible");
+        });
+        if (isVisible) {
+          el.classList.remove("visible");
+        } else {
+          el.classList.add("visible");
         }
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>AI Sovereign Labs</h1>
-        <p class="slogan">AI at the service of the sovereign enterprise.</p>
+      <h1>AI Sovereign Labs</h1>
+      <p class="slogan">AI at the service of the sovereign enterprise.</p>
     </header>
 
     <main>
-        <div class="bullets-container">
-            <div class="bullet-item">
-                <div class="bullet-header">
-                    The first sovereignty is the ability to read your own code.
-                    <div class="help-btn" onclick="toggleHelp('exp1')">?</div>
-                </div>
-                <div id="exp1" class="explanation">
-                    AI shouldn't be a black box. If you cannot audit, understand, and verify the code generated for your infrastructure, you have surrendered intellectual control to the model provider.
-                </div>
-            </div>
-
-            <div class="bullet-item">
-                <div class="bullet-header">
-                    The second sovereignty is the ability to hide your own code.
-                    <div class="help-btn" onclick="toggleHelp('exp2')">?</div>
-                </div>
-                <div id="exp2" class="explanation">
-                    Your IP is your fortress. True sovereignty means processing your logic locally or in private environments, ensuring your proprietary source code never trains a third-party model.
-                </div>
-            </div>
-
-            <div class="bullet-item">
-                <div class="bullet-header">
-                    Claim your sovereignty.
-                    <div class="help-btn" onclick="toggleHelp('exp3')">?</div>
-                </div>
-                <div id="exp3" class="explanation">
-                    Sovereignty is not a constraint, it is the ultimate leverage. By owning your intelligence and your infrastructure, you eliminate dependency and transform your software into an impregnable strategic asset.
-                </div>
-            </div>
+      <div class="bullets-container">
+        <div class="bullet-item">
+          <div class="bullet-header">
+            The first sovereignty is the ability to read your own code.
+            <div class="help-btn" onclick="toggleHelp('exp1')">?</div>
+          </div>
+          <div id="exp1" class="explanation">
+            AI shouldn't be a black box. If you cannot audit, understand, and
+            verify the code generated for your infrastructure, you have
+            surrendered intellectual control to the model provider.
+          </div>
         </div>
+
+        <div class="bullet-item">
+          <div class="bullet-header">
+            The second sovereignty is the ability to hide your own code.
+            <div class="help-btn" onclick="toggleHelp('exp2')">?</div>
+          </div>
+          <div id="exp2" class="explanation">
+            Your IP is your fortress. True sovereignty means processing your
+            logic locally or in private environments, ensuring your proprietary
+            source code never trains a third-party model.
+          </div>
+        </div>
+
+        <div class="bullet-item">
+          <div class="bullet-header">
+            Claim your sovereignty.
+            <div class="help-btn" onclick="toggleHelp('exp3')">?</div>
+          </div>
+          <div id="exp3" class="explanation">
+            Sovereignty is not a constraint, it is the ultimate leverage. By
+            owning your intelligence and your infrastructure, you eliminate
+            dependency and transform your software into an impregnable strategic
+            asset.
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer>
-        <nav>
-            <a href="https://ai-code.ai">Main Project: AICode</a>
-            <a id="contact-link" href="javascript:openContactEmail()">Contact</a>
-        </nav>
+      <nav>
+        <a href="https://ai-code.ai">Main Project: AICode</a>
+        <a id="contact-link" href="javascript:openContactEmail()">Contact</a>
+      </nav>
     </footer>
-</body>
+  </body>
 </html>
