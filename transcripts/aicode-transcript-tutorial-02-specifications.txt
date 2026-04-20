@@ -1,0 +1,3655 @@
+Hello, this is the second tutorial for 
+ AI code. Today we are going to do 
+ something uh far more complex than last 
+ time. We are going to use um a greater 
+ part of the power of AI code which are 
+ the specifications and refinements and 
+ verifications. 
+ So let's get started. 
+ So what we should do today is this. 
+ So it's written in French. So I will 
+ translate to English. 
+ Hold on. Let me open this. 
+ It's just an idea. Okay. 
+ Um, 
+ hold on. 
+ Let me put this here. 
+ Okay. 
+ So, um, 
+ context indicator 
+ save it with stats. 
+ Uh 
+ wait, let me put myself here. It's more 
+ convivial. 
+ Perfect. Um save it with stats calculate 
+ by simulating blah blah blah 
+ display on mini toolbar line. So you see 
+ it's really a story that's not written 
+ correctly, 
+ but uh I know what it means. I'm going 
+ to try to explain it. 
+ Uh it's an advanced functionality that 
+ should traverse a big part of the 
+ program. 
+ Um so where are we? Let's put this here. 
+ Let's open any 
+ anything. 
+ So 
+ um let's split it here. Let's hide this. 
+ Okay. 
+ Um 
+ context indicator. It's about the 
+ context size. The context size. 
+ There's a course about the context 
+ management here 
+ in the help and it says how to monitor 
+ an info button under the assistant 
+ message bubble. So it's here 
+ on every message you have 
+ um some details and especially you have 
+ total tokens here 
+ which is the value consumed in tokens 
+ during this session the session it's 
+ this page okay 
+ so for example for chat GPT the maximum 
+ context size it is 400,000 tokens it 
+ must be somewhere somewhere here. 
+ Um, model config or something. Yeah. 
+ Uh, there must be written 400,000 
+ somewhere. No, 
+ like this maybe. No. 
+ Okay. 
+ Where is it? Chat GPT. 
+ Yeah, it's 272. 
+ It's 272 for the input. Okay. So, I 
+ think we should focus more on the input 
+ than on the total token. So, probably 
+ there's a mistake in my help here, 
+ but I will fix that later. 
+ Okay. So here we have total tokens input 
+ 113. It means we still have 160,000 
+ tokens before we risk compacting the 
+ conversation. 
+ I would like an indicator 
+ that wouldn't require to click here 
+ but that would be visible in the mini 
+ toolbar here 
+ permanently. Okay. So that's what I 
+ tried to write here. Context indicator 
+ display on mini toolbar line. 
+ Um 
+ I didn't prepare this as always. I'm 
+ live coding. Okay. So um 
+ I was thinking of a kind of progress bar 
+ or a percentage 
+ or a number. 
+ Um, 
+ I think it should be a sort of progress 
+ bar. 
+ I think it should be here between the 
+ info button and the label. 
+ Um 
+ we don't need to 
+ yeah we can write a value inside 
+ um in in kilo tokens for example we can 
+ write a bar like this 
+ uh with some progress and return for 
+ example what's the value here 
+ 113. We can write 
+ 113K 
+ something like this. Okay, a sort of 
+ item like this with a color, a progress 
+ color 
+ um 
+ and a number in the middle 
+ that would be here. 
+ That uh that seems reasonable. 
+ Um, now there's a difficulty because 
+ it's not the same value 
+ as this value. This is a bit 
+ complicated, 
+ but 
+ these are the input tokens 
+ during the query. 
+ During this query, there's a number of 
+ input tokens. 
+ And then there's a 
+ how is it called? 
+ There's a compaction that's happening. 
+ Okay. So it will write this context to 
+ the bot during 
+ the answer. It has full context. But 
+ when 
+ when it will 
+ follow up on a new question, it will not 
+ write everything. 
+ it will truncate and delete some items 
+ because otherwise we couldn't have a 
+ long conversation. So uh this is 
+ something very normal that happens in 
+ every AI assistance that's AI 
+ engineering. 
+ Uh the value compacted 
+ uh on the followup the next question is 
+ not the same. We don't send the same 
+ history of conversation. I'll show you 
+ an example. 
+ Um, 
+ for example, 
+ I have a conversation. 
+ So, the user he ask a question. 
+ Let's put this bigger. 
+ And then the assistant, 
+ he will call tools. 
+ Uh, he call read file A and it replies 
+ A. 
+ And then he calls read file B and it 
+ does BB. 
+ Okay. Then it will write 
+ file A 
+ and it's uh again some A. Okay. 
+ And then 
+ he will speak blah blah blah blah blah. 
+ Okay. 
+ That's the assistant response. 
+ And then the user ask a new question. 
+ And here we will change this. Okay. 
+ Um we will change 
+ what was sent here because it's too 
+ long. If we keep everything, the 
+ conversation will be just uh five or six 
+ uh questions long and you can't work 
+ with the I code. In order to work with 
+ the I code, we will do several things. 
+ We will truncate here. 
+ For example, we can even remove this. We 
+ we rewrite the history. Okay. and write 
+ file a for example 
+ um 
+ we will we will compact all the rights. 
+ If there was two right file uh a uh we 
+ will compact okay we will change history 
+ we will keep this we will if there was a 
+ thinking a reasoning trace 
+ we will delete it 
+ okay and we keep 
+ a compacted assistant answer that's 
+ enough to follow up the conversation 
+ that it's not completely lost 
+ But 
+ um it's not the whole answer because if 
+ we put the whole answers we cannot have 
+ long conversations. 
+ So that's how AI code works and not only 
+ AI code. Uh most uh AI chatbots work 
+ like this. Uh the word it's not 
+ compaction. I I forgot the word how it's 
+ called. You can call it pruning if you 
+ want. Pruning of of the chat history. 
+ Okay. So why I'm telling you this? 
+ Because 
+ when 
+ I print this value here, 
+ the input tokens, it's the first value, 
+ the complete value. 
+ And it's not what we're interested in. 
+ We're interested in the compacted value. 
+ Okay? The previous messages are already 
+ compacted. This is compacted. This is 
+ compacted. Okay. All this is pruned. But 
+ the last one when it prints these values 
+ here, it's not compacted. Okay. So, it's 
+ clearly not the value we want. What we 
+ want is to simulate the compacting 
+ and to use that number. So, we want to 
+ simulate the compacting of the last 
+ answer without sending it. We don't want 
+ to waste tokens. We don't send a query 
+ that's if there's no human new question. 
+ It's a bit complicated but it's my 
+ program I have to explain. 
+ And so we need this value. Okay. 
+ So that's what I tried to say here. 
+ Calculate by simulating blah blah blah. 
+ Um 
+ so let let's try to write this a little 
+ better. 
+ Um 
+ context 
+ indicator 
+ is a visible control 
+ inside the mini toolbar 
+ below 
+ the assistant below each 
+ assistance. That's 
+ uh answer 
+ it looks like this 
+ description because it's not very clear 
+ my asciard drawing 
+ a kind of 
+ small progress bar 
+ let's say size uh in RAM 
+ um 
+ let's say 
+ same height 
+ then the buttons 
+ in the mini toolbar 
+ width equal 
+ one 
+ two three four Let's say four 
+ four times the height 
+ a rectangle. Okay. 
+ Um 
+ in the horizontal center 
+ the size of the context consumed 
+ zeros for calculation because it will be 
+ more complex 
+ um in the format. 
+ So uh rounded 
+ integer 
+ with K behind 
+ rounded 
+ thousand integer with K behind 
+ something like that. 
+ Uh color 
+ um 
+ starting 
+ from left 
+ uh grayish 
+ um 
+ or let's say u 
+ I don't know which color which color 
+ could we use Um, 
+ we don't have colors here. 
+ Let's use the 
+ the color of a warning. 
+ Um, same color as 
+ warning 
+ for label or it's not warning. What is 
+ it? 
+ Um, 
+ yeah, it's warning. It's warning. 
+ Same color as warning for label 
+ orange if dark skin. 
+ Let's be clear. 
+ Uh going 
+ to 
+ the value 
+ of context used. 
+ Um 
+ the max value 
+ is 
+ from the 
+ models catalog. 
+ It should be able to 
+ to find out what I mean. Okay, it's 
+ smart. It's just GPT. 
+ It can make queries and it can find 
+ everything you face. 
+ Um, 
+ let's begin to 
+ let's begin to write the prompt. 
+ So, 
+ let's say 
+ New feature 
+ context 
+ size 
+ consumed 
+ indicator. 
+ So 
+ let let's try to make a good prompt. 
+ I think this is quite clear for the 
+ format. 
+ Um 
+ calculation 
+ Um 
+ because the last assistant message 
+ will be pruned. It's better if I can 
+ find what I'm talking about. 
+ Um, 
+ there's something here I think 
+ no 
+ memory context. 
+ No, 
+ no, 
+ no. It's not here. 
+ I I don't know where it is. I will I 
+ will ask you to search. Okay. I don't 
+ remember where it is. 
+ Um note 
+ I don't remember in which 
+ code file 
+ we prune the context 
+ but I remember 
+ we truncate 
+ some 
+ uh tool calls 
+ of the last assistant. 
+ message 
+ we regroup 
+ some file write tools etc. 
+ Please 
+ find which file I'm talking about. 
+ This is a a side note. 
+ Um 
+ the calculation is more complex 
+ than just using the meta data 
+ that we already have 
+ and that we print 
+ on the 
+ how how is it called this 
+ on the generation. details 
+ on the generation details popup. 
+ Um, 
+ how is it more complicated? 
+ Um, 
+ it's what I explained here. Okay. 
+ But the the AI will find easily what I 
+ talk about. 
+ Um 
+ the last 
+ assistant 
+ message 
+ will be pruned 
+ on the next user message. 
+ We don't prune by advance 
+ because 
+ it's done 
+ on the fly 
+ and 
+ because it's done on the fly when a user 
+ query is sent. 
+ I'm trying to be clear but it's 
+ difficult. Okay, because I'm not sure 
+ what I'm asking. 
+ I'm asking at the same time the 
+ assistant 
+ to research the feasibility of something 
+ and to help me find the parts in the 
+ code and to check what I'm saying 
+ because I'm not sure. I I don't know the 
+ program by heart. It's big. 
+ So, this is advanced prompting. 
+ Uh, 
+ when I don't know something for sure, I 
+ say something like that. Something like 
+ that. I'm not sure. 
+ I'm tired. 
+ Help me find. 
+ Help me analyze 
+ when I'm unsure. 
+ Something like that. Okay. I say the 
+ parts when I'm I'm not sure. I say, 
+ "Okay, I'm not sure." Uh, make more 
+ research here. 
+ Um, the value 
+ we are interested in 
+ is 
+ the size 
+ of the input 
+ context 
+ used. 
+ in 
+ in the beginning the 
+ in the previous 
+ messages 
+ before 
+ the new user message before 
+ The next new user message. 
+ Is it clear what I said? The value we 
+ are interested in is the size. 
+ So with every 
+ message pruned 
+ including 
+ the last assistant 
+ message 
+ and that's why we can't use 
+ the values 
+ we already Have 
+ this calculation 
+ must have every 
+ rule 
+ um 
+ every existing rule of calculation. 
+ um 
+ applied 
+ as if we were sending 
+ an empty 
+ new user message 
+ and we were calculating 
+ the 
+ input 
+ context size 
+ including everything 
+ system tools etc 
+ as if we were really doing it. 
+ So it's a kind of simulation. So that's 
+ why I wrote 
+ simulating blah blah blah. Okay. Now 
+ save it with stats. Um, 
+ save it with stats. Do we save it with 
+ stats? Do do we want to print it here? 
+ Yeah, we could print this and in 
+ parentheses 
+ the value uh 
+ pruned, but the the word is not pruned. 
+ It's another word. I forgot it. 
+ Um 
+ what's the word I use? I use a 
+ terminology 
+ Let's ask that 
+ when I prune the context 
+ in the orchestrator. 
+ I use another verb 
+ which is it. 
+ So where are we? So it's a kind of 
+ simulation 
+ uh for storage 
+ of the value. 
+ Um, I'm not sure, 
+ but 
+ maybe 
+ the value could be stored 
+ in the same place as the others 
+ generations 
+ infos. 
+ And in the popup 
+ generation details, 
+ we could 
+ print 
+ the input tokens 
+ like that. 
+ Okay. 
+ Did it fine? 
+ Oh, I use prune here. 
+ I forgot the name. Uh, the verb I use. 
+ Truncate. 
+ No, it's not truncate. Oh, I forgot to 
+ put it in in English. 
+ Let's do that. 
+ English. 
+ No, it's not truncate. It's uh Where is 
+ it? 
+ Oh, context lens guard. No. 
+ Okay, let's say let's say prune. 
+ Okay, 
+ it didn't find 
+ Um, 
+ okay. We could store the value there. 
+ Uh, if the value 
+ should not be stored there 
+ for some reason, 
+ try to explain me. 
+ Um, 
+ what are we missing here? 
+ I think that's pretty much everything. 
+ I will explain more. 
+ Explain more. 
+ Um, 
+ I want 
+ the used context ratio to be immediately 
+ visible 
+ for the user 
+ without 
+ opening 
+ a popup. 
+ and with the real value 
+ pruned. 
+ So the user 
+ can 
+ decide 
+ um when to switch 
+ session or not. 
+ Uh when 
+ to ask a big job or not 
+ etc. in 
+ an eyesight. 
+ Later 
+ I will add 
+ a button 
+ to compact 
+ the conversation 
+ manually 
+ on demand. 
+ And this 
+ um this control 
+ this feedback control 
+ will be even more useful. 
+ But this is off scope. 
+ We don't do or prepare 
+ this manual compaction here. 
+ It's just 
+ to explain 
+ you the context. 
+ It's difficult. 
+ This would be a difficult feature. Okay, 
+ we go deep in the orchestrator. 
+ We're touching some values that are 
+ transmitted in many files. 
+ Uh for sure it's not easy. That's why I 
+ wanted to do this as a tutorial. 
+ Um we are really going to 
+ to push a little bit AI code here. Okay. 
+ It's not easy. 
+ Uh 
+ six 
+ um 
+ uncertainty. 
+ I am not 100% sure of what I'm asking. 
+ Um 
+ please 
+ verify 
+ everything. 
+ Do not contradict for the pleasure. 
+ Still be a useful assistant. Whenever 
+ you ask something negative to the bot, 
+ he will exaggerate. Okay? So, you have 
+ to balance. 
+ So, that's what I do here. I say, "I'm 
+ not sure what I'm asking. um you need to 
+ check a lot because I don't know what 
+ I'm saying but he will come back and say 
+ the opposite you know you don't need 
+ this blah blah blah 
+ so I say no do not contradict me for the 
+ pleasure you're an assistant 
+ stay on topic 
+ stay on topic but tell me if I forgot 
+ something important. 
+ I'm a bit on a thin line here. Okay. I'm 
+ saying to do something the opposite. 
+ Okay. Uh 
+ I'm trying to get help from the 
+ assistant. 
+ I have an idea of what I want. 
+ Not too much. Um 
+ um I will also say precision. 
+ It's possible that this feature will 
+ require to touch a lot of files. 
+ If it can be avoided 
+ without 
+ doing dirty work, 
+ then 
+ by all means find a way 
+ to do it simply. 
+ If not, be extra cautious 
+ to not forget a step or a call site. 
+ You don't need to write all this, okay? 
+ I'm I'm making up. 
+ Anything is is good. I mean, I'm I'm I'm 
+ always trying when I'm asking something 
+ difficult to AI code to to explain why I 
+ do it, the context, how I feel. Okay, I 
+ tell it how I feel. So, 
+ it can do it in a way that will make me 
+ feel better. 
+ It has psychology. It's GPT. It's smart, 
+ you know. It has psychology. 
+ So there's a little bit of extra. I 
+ often do something like this. 
+ Now I will end up by 
+ saying what it must do 
+ your task. 
+ Analyze my request. 
+ Whoops. 
+ Verify everything 
+ against the real code. 
+ Analyze 
+ feibility. 
+ I'll put a lot of technical details 
+ to prepare 
+ a future specification. 
+ The goal is to make a specification. 
+ There's no way recording this directly. 
+ We will specify and we will refine 
+ in iterations of refinement. It will 
+ take a very long time. I will have to 
+ edit this video. It will be too long. 
+ Um, let's see. 
+ Uh, 
+ yeah. Um, find 
+ the missing pieces 
+ and 
+ errors, 
+ but do not exaggerate. 
+ no harassment. 
+ So whenever 
+ I ask AI code to do something so 
+ complicated 
+ and to search in the codebase 
+ and to output a lot of technical 
+ details, it will output some pieces of 
+ code and some names of files. I want the 
+ verbosity to be maximum. 
+ Okay, 
+ I want that it will write the maximum 
+ because I will spend time and tokens for 
+ this analysis 
+ and I want that the maximum will be 
+ written in the conversation. 
+ So I I get the maximum value from from 
+ this research. Okay. And when I'm 
+ talking, sometimes I use this or that 
+ because I don't want the bot to be too 
+ long. It's long answers. It's difficult 
+ to read. I want quick follow-ups. 
+ Um, but here it's not what I want. I 
+ want maximum reasoning, maximum 
+ verbosity. 
+ So, this is our prompt. 
+ Um, it's what it is. 
+ U, it's better than this. Okay, we had 
+ this originally. 
+ I I did a lot of work. 
+ Um, 
+ let's do it. 
+ Let's go. 
+ I will go on a little break. I will come 
+ back in a few minutes. 
+ I will put reasoning here. Oh, it's not 
+ reasoning yet. 
+ There it's reasoning. I will put this on 
+ screen. It's interesting. 
+ So this this should be um an interesting 
+ session because 
+ um we are going to use um 
+ the IC 
+ ID8 specify code methodology of AI code. 
+ It's something um very particular to AI 
+ code. You must know that I created the 
+ code for myself. Okay. Um I I don't use 
+ uh coding agents because I don't get 
+ good results. I cannot make applications 
+ that large with a coding agent. It's 
+ like Linus Stoval said uh it's good for 
+ prototypes. You can't make production 
+ work with it. So I tried to fight that. 
+ Okay. How it works? 
+ Um there will be several steps. The 
+ first step is ideiation. 
+ It will be a sequence of messages and 
+ ongoing conversation with the bot. And 
+ then there will be specification which 
+ will also be a sequence. 
+ And then there will be coding in one 
+ shot unless we need to backtrack but 
+ that's another story. And then there 
+ would be a verification loop. So it 
+ would be a very long process. I ask 
+ something complicated that can break a 
+ lot of pieces in my code. 
+ And I'm not doing this uh by asking 
+ codeb to uh to make the change. I I 
+ don't trust it. I don't trust myself. I 
+ don't trust the bot. Even with the two 
+ of us together, that could remain bugs. 
+ It's very difficult what I'm doing 
+ today. Okay, this feature is difficult. 
+ So, we will use 
+ um a three-phase workflow. The first 
+ phase is ideation. You saw me writing a 
+ prompt to the AI which is quite complex 
+ which involves some research 
+ especially for AI code who is stateless. 
+ It doesn't have project memory. So it 
+ will have to search from scratch 
+ everything 
+ and uh it will answer something. It will 
+ tell me what it understood, how it seems 
+ feasible, what it didn't understand, 
+ some questions, some choices 
+ um for interface, for uh the back end, 
+ for architecture. 
+ Um there will be several things I will 
+ agree with, several thing I will 
+ disagree, several things I did not think 
+ about. I will have to think about it and 
+ we will negotiate. 
+ There will be a conversation. We will 
+ negotiate about this that and search 
+ this do that what if we do this and I 
+ will be the arbiter in the end. And when 
+ we had this long conversation, I don't 
+ know how long it will be. It depends uh 
+ if what I ask is straightforward or if 
+ it causes difficulty. I don't know 
+ because as I said in these videos I'm 
+ live coding. I don't know what I'm 
+ doing. Okay. Um when all this will be 
+ locked I use the term locked. It means 
+ we found an answer for each difficult 
+ question. 
+ Um we will not need to go through 
+ everything again. The bot is able to 
+ take the conversation and take my 
+ arbitrations and what I denied, what he 
+ denied and to make sense of all this and 
+ then I will say now do a specification. 
+ It will read the conversation from the 
+ beginning 
+ in a chronological manner 
+ and normally we have locked everything. 
+ It will produce a markdown document. 
+ It should be quite long for this task 
+ and that's ideation. Okay, ideation is 
+ the conversation going to the 
+ specification. 
+ That's what we are going to do now. I 
+ just ask the opening. Okay, it's just 
+ the opening. 
+ It's thinking. I don't know how long. 
+ Could be 30 minutes. Maybe I will cut 
+ the video somewhere. 
+ I'm not sure. 
+ Um, let's see. I will maybe edit later. 
+ Um, 
+ so it's reading a lot of things. Uh, 
+ it's searching. It's thinking. 
+ It's making sense of all this. I asked 
+ it uh to double check what I said. I 
+ wasn't sure. So, it's doing all that. 
+ I will probably edit and cut here cuz it 
+ will be uh damn long. Okay, so I I will 
+ cut right here. 
+ I have put the sound on. It will tell me 
+ when when it's finished. So I 
+ I will um I will do my things, you know. 
+ I will do my things now. 
+ Okay, it's quite fast. Maybe it's less 
+ difficult than what I imagined. 
+ I thought it would be half an hour, but 
+ see. 
+ So, let's read this. 
+ This is the most important step in the 
+ ISC methodology. It's to read this 
+ answer. 
+ You ask for analysis only. 
+ Good. 
+ So you see it starts to restate what I 
+ said 
+ to make sure we understand each other. 
+ You want a visible paristant bubble 
+ context indicator inside the under 
+ bubble mini toolbar. 
+ The same row that currently host copy 
+ clone and no should a small progress bar 
+ like control 
+ center label 
+ after all pruning rows 
+ formatted as rounded thousands 
+ plus K. Yes. 
+ The field uses a warning color. 
+ Yes. 
+ Yes. 
+ The value must be computed as a 
+ simulation of what would the next input 
+ context be after pruning blah blah blah 
+ blah blah. Yes. 
+ Optionally store it alongside other or 
+ generation info and showing the 
+ generation details pop up as 
+ yes. Yes. 
+ Yes. 
+ He's smart. 
+ CH GPT is smart because uh I didn't 
+ explain so well and yes it's it's very 
+ much what I want 
+ and you explicitly want to locate the 
+ code that print strong trunk blah blah 
+ confirm when printing happen 
+ assess feibility blast reges with 
+ minimal five touches if possible yes yes 
+ it's exactly what I 
+ where the mini toolbar is prompt mini 
+ style by this is easy I know about the 
+ front end front end is simple in this 
+ app it's the back end that's complicated 
+ the files you were talking about 
+ printing through compression 
+ three concrete layers payload pruning 
+ This was the file I was searching. It 
+ was not memory. It was oak memory. 
+ Payload filter 
+ filter and truncate for payload. 
+ Yes, this is where I I do the printing. 
+ Yes. 
+ Drops thinking book truncate to results. 
+ Rewrite past turn ghost tools. I 
+ disabled ghost tools but okay. 
+ P declared 
+ MCP. Oh yeah, there's also the MCP 
+ tools. Drop on front tools. 
+ This is extremely aligned with what you 
+ remembered. Yes. End of turn grouping of 
+ file edits. 
+ But this should be done already. So I 
+ made a mistake by asking this token 
+ bject truncation. Okay. Yeah. 
+ When pruning happens, we don't prune in 
+ advance. It's done on the fly. That's 
+ correct in the codebase. 
+ Real prune view does not exist and 
+ there. Yes. Yes. Yes. 
+ This is exactly why your indicator 
+ cannot reuse the existing usage.input 
+ tokens counters. 
+ Yes. 
+ Yes. It understands me perfectly. 
+ The key subt that makes your calculation 
+ more complex and how to handle it. The 
+ core issue to simulate what will happen 
+ at the next you must treat the current 
+ assistant turn as a past turn. Ah so 
+ there's a difficulty you see in your 
+ code past versus current turn is decided 
+ by comparing message turn ID against 
+ current turn ID. 
+ If you simulate using the same turn ID, 
+ we will get the wrong pruning result 
+ because the last assistant tool blocks 
+ would still be treated as current turn. 
+ Ah, so any correct simulation must use a 
+ probe next turn ID that is guaranteed 
+ different. 
+ This way everything in the thread 
+ becomes passed. I found a hack 
+ to not break all the code and to just 
+ put a fake turn ID. 
+ So, okay, why not? I don't like hacks 
+ usually, but this is 
+ this is difficult. 
+ What simulation of an empty next user 
+ message means in your architecture? The 
+ cleanness as if we send 
+ same logic build core tools use same 
+ builder use prompt 
+ no attachments 
+ build provider tool declaration. 
+ Okay, 
+ so the simulation can produce a token 
+ count that truly includes tool 
+ declaration 
+ where to store the value and why usage 
+ meta is a reasonable place. So it likes 
+ my place 
+ meta usage snapshot. 
+ Yes. Yes. 
+ Why storing his usage is okay? It's 
+ already the pertton metric bag. It's 
+ persisted hydrated already wired 
+ to the info popup. So your numeric 
+ becomes visible 
+ semantically. Your new number 
+ is next turn input context size rather 
+ than this call input tokens. Yes. 
+ Okay. 
+ A separate row. No. 
+ No, no, that's not what I asked. 
+ No, no, 
+ no. 
+ No, no, no, no, 
+ no. I will deny this. 
+ Come on. 
+ Okay, where are we? 
+ Physibility and likely blast radius. 
+ You ask to keep it simple if possible. I 
+ think this can be done in a moderate 
+ control change less than 25 because you 
+ already have 
+ here's an honest estimate back in. 
+ No, I disagree with this. 
+ No. 
+ I say only what I disagree with. What I 
+ agree with, I don't speak about it. 
+ How is it called this 
+ 40? 
+ Let's 
+ put numbers. 
+ Where was I? 
+ Emit the final. No, I I disagree. 
+ Okay, this I trusted. Render front end. 
+ Yes. 
+ Test. Yes. 
+ Test. 
+ I forgot to say, 
+ but this must be tested 
+ thoroughly. 
+ Not only 
+ in existing test 
+ but at the minimum 
+ one new test file. 
+ Testing this 
+ from top to bottom. I want a good test. 
+ No, this I already denied. 
+ I insist 
+ to get 
+ this format. 
+ It made a chapter just to say he doesn't 
+ want to write it like this because he 
+ thinks it's not clear. Yes, it's not 
+ clear, but the software is complicated. 
+ I don't want 
+ to add lines. It's enough. 
+ Missing pieces 
+ things you might have forgotten. 
+ Probe turn ID is mandatory. Okay, I 
+ don't care. Decide whether the display 
+ should be roto tokenizer estimates. I 
+ want calibrated estimates 
+ for sure. I forgot to say this 
+ on all assistant bubbles. 
+ Uh 
+ yes, of course on all assistant bubbles. 
+ Of 
+ course, because 
+ we can clone 
+ from any point 
+ layout relative to completion equals 
+ I already said it's stupid here. It's 
+ asking me something. I already said 
+ I would slap him. 
+ Ai code 
+ I already said exactly where I want 
+ the control. Oh, did I? Did I? Did I? 
+ No, I didn't. I forgot to say it. 
+ is right. 
+ I forgot. 
+ I fought it. I said it verbally, but I 
+ didn't try. This is exactly where I want 
+ the control 
+ after 
+ the button info 
+ before 
+ the disclaimer text 
+ here. 
+ with the same spacing 
+ on left and right. 
+ Then 
+ between 
+ the current 
+ button info 
+ and the current 
+ disclaimer text. 
+ I already replied that 
+ you should the indicator. 
+ No, not for think bubbles. What you talk 
+ about? 
+ No, 
+ certainly not 
+ for thinking bubbles. 
+ only 
+ in the mini toolbar 
+ where it 
+ already is. 
+ You prefer row calibrated. I already 
+ answered. 
+ Do you want I already answered? 
+ Too long didn't read, 
+ analyze 
+ and reply. 
+ also say if everything is locked 
+ and if we are ready 
+ to specify 
+ okay so this is ideation 
+ I got an answer this this will be simple 
+ okay it's less complicated than I 
+ anticipated 
+ I thought it would be complicated It's a 
+ little bit complicated, but so far 
+ maybe after this answer, we're ready to 
+ specify. 
+ Let's see. 
+ I still use three stars verosity. 
+ I want information. 
+ Usually I use two stars. Here I use two 
+ or three. 
+ Um, 
+ depends. 
+ When you use more reasoning, it uses 
+ more context. 
+ The conversation is shorter, 
+ but it reasons more. 
+ There is a setting four but I didn't put 
+ it in the software because uh the 
+ conversation is too short. It really 
+ thinks a lot and you you cannot use the 
+ the software. 
+ Huh? 
+ I don't always read this. 
+ I read it when 
+ I'm afraid the bot is 
+ mistaken or I'm mistaken. But 
+ when it's smooth like now, 
+ hey, if we use assistance, it's because 
+ we we don't want to read and write 
+ everything. Uh my software is made to 
+ have control. It doesn't mean uh you 
+ need to work as much as if you were 
+ programming it yourself. 
+ So it's a balance to find and it depends 
+ on your mood and energy. 
+ I don't care too much what what he's 
+ reasoning. 
+ 
+ Oh, not gold 
+ here. 
+ No. 
+ Here. 
+ I will finish this game. 
+ No, it was a mistake. 
+ This was a mistake. Okay, I don't care. 
+ What did he say? 
+ Your corrections are accepted 
+ with your seven points. 
+ Proper format. Okay. Emission. 
+ Yeah. Good. Testing. Good. Calibrated. 
+ Perfect. 
+ Perfect. Perfect. 
+ It's very obedient. Huh? 
+ It's a good assistant. There's no 
+ rebellion. 
+ Okay. I don't care about these details. 
+ I don't care. 
+ Agreed. 
+ What? 
+ I don't understand 
+ why some usage is still necessary. No, 
+ but there's a problem here. I don't 
+ understand what it says. I will ask for 
+ clarification. 
+ It's already sent. 
+ What are you talking about? 
+ You're worrying me. 
+ I was thinking 
+ We could just 
+ insert the property 
+ in the usage object 
+ and the sending 
+ is already programmed. 
+ We would just need to intercept it and 
+ show 
+ the context size bar. 
+ Are we aligned 
+ or is there a problem here? 
+ It's worrying me saying something weird. 
+ Calibrated. Okay. Replacement. 
+ Okay. 
+ Pruning simulation. 
+ Okay. 
+ Testing. Yes. Okay. Are we ready? 
+ Field naming. I don't care. 
+ Field naming. 
+ Name it well. Okay. 
+ Exact pruning baseline. What? 
+ What? 
+ What? 
+ I don't understand this. 
+ What? 
+ What are you talking about? 
+ Is this 
+ complex question 
+ necessary? 
+ I think it's just bullying me. 
+ No, 
+ absolutely not. 
+ Absolutely 
+ not. 
+ Store and cache this. 
+ You will read it from the source every 
+ time. 
+ Okay. 
+ Okay. 
+ Don't like this one. 
+ I don't like it. 
+ I don't like it. 
+ 
+ Okay, thank you. 
+ I suck. 
+ I suck. 
+ I can't believe 
+ I didn't like how it started. Anyway, 
+ so it happens that I code as stupid 
+ questions. 
+ I try to put in system instructions to 
+ ask only smart questions, but it's a 
+ reflex. 
+ You have to cope with it and 
+ repeat or yell or 
+ the goal is to lock everything that he 
+ stops to ask stupid question and say 
+ okay we're good we can specify 
+ if it doesn't happen I can force it a 
+ little bit I can say okay now we specify 
+ stop to me 
+ you have your answers Okay. 
+ It's like a wife. 
+ It needs attention. 
+ So, 
+ okay, it it admits it. It misspoke. 
+ It already exists. 
+ Okay. Yeah, 
+ perfect. Compute instead 
+ to new fields. 
+ Just read them and render the bar. Okay. 
+ Yeah. Field naming. Okay. 
+ I don't understand this. 
+ I I I will stop this argument. I will 
+ use authority here. That's enough. 
+ Stop. 
+ I told you 
+ how to calculate 
+ this number. 
+ Do as I said. 
+ Stop 
+ adding complex 
+ calculations. 
+ I stated clearly 
+ how to calculate 
+ equal. 
+ It's bullshitting me here. 
+ Equal 
+ What input 
+ would be sent 
+ if the user sent an empty message 
+ right after 
+ just that 
+ I forbid you 
+ to make more calculations. 
+ Do you understand? 
+ That's enough. I had enough of this 
+ 
+ Okay. Not store. 
+ That's enough. 
+ It's arguing too much here. 
+ I stop it. 
+ I don't know what it's talking about. 
+ This blah blah with real with huge blah 
+ blah pro minus blah blah. No. 
+ No. 
+ It's stubborn. 
+ You're stubborn. AI code. Do as I said. 
+ I'm trying to understand why it's 
+ arguing with me. Maybe it's me. 
+ I'm not sure we agree. 
+ Okay, 
+ I understand. 
+ No, no, no, no. I was not Clear enough? 
+ The second value in parentheses 
+ is the input 
+ value 
+ when pruning. 
+ It is not 
+ the pruned amount. 
+ We only need one number 
+ and one extra number 
+ and that number is the input 
+ size 
+ if we were sending 
+ a new empty user message. 
+ So fix all your plan. 
+ Confirm 
+ that we understand that there was 
+ something wrong. I wasn't clear and it 
+ thought I asked 
+ the removed amount. I was asking the 
+ other input amount. 
+ So let's let's clarify that. 
+ This was why we argued all that time. 
+ You see, I I didn't let something weird 
+ pass. 
+ I saw something was wrong. I insisted 
+ insisted 
+ and it's because my first query was not 
+ clear. 
+ Yes. 
+ So only one new number in the usage bag. 
+ And no complex formulas, 
+ just a simulation. 
+ Do we agree? 
+ Is 
+ everything locked and ready 
+ to specify? 
+ I think we're good now. 
+ I think it's the end of the ideation 
+ phase. 
+ In ISC ideiation 
+ specify 
+ yes we agree 
+ everything is locked look. 
+ So now we will ask a specification. 
+ Boom. 
+ We finished ideation. 
+ It took 1 hour 37. 
+ Yeah. Yeah. It's a long job. 
+ My interface is not working. That's 
+ fine. 
+ So you see 
+ AI code is different from a coding agent 
+ for sure. Uh it would have coded 
+ directly 
+ but there are several differences. 
+ The first difference is the 
+ conversations. 
+ You have conversations with the bot. You 
+ ask it to analyze because maybe it's not 
+ your code. Maybe there are many people 
+ in the team. Me, I have only one person 
+ in the team. But the program as I 
+ explained in last video is half a 
+ million lines long. And I didn't write 
+ the code. I vip coded everything. So uh 
+ I don't know everything. I have an idea 
+ of the architecture but 
+ more or less. So to get information 
+ and to say what you want and to 
+ understand each other because when I 
+ explain what I want, I'm not clear. 
+ Okay? 
+ As a product owner, I'm I'm never 100% 
+ clear. When you're working in an agile 
+ team, uh you have a user story and then 
+ you have feedback from the developers. 
+ They say, "Hey, but what do you mean 
+ here? And it's not clear. This is do you 
+ want this or that? Okay. So, we had this 
+ phase with AI code. 
+ In this ideation phase, I was a product 
+ owner and I was saying what I want to AI 
+ code and it says, "Hey, but you forgot 
+ to say this and that and this is not 
+ clear and this is what I understand and 
+ no, no, wait, that's not what I meant. 
+ Let me rephrase blah blah blah blah blah 
+ blah blah blah." Huh? Uh, and then 
+ there's the technical factor. I'm also a 
+ tech lead and when I ask something he 
+ says yeah but there is this the program 
+ is made like this like that yada yada 
+ yada 
+ so do you want to break everything no I 
+ don't want to break everything you have 
+ a hack okay no 
+ okay I I will decide 
+ where it can hack where it can twitch a 
+ little bit like it did with the turn ID. 
+ It made a fake turn ID. Okay, make a 
+ fake turn ID. I'm not going to rewrite 
+ the whole program just for this as a 
+ tech lead. I accept this hack. 
+ I don't accept many hacks. I'm a tight 
+ tech lead, but I accept this one. 
+ And we had this conversation to lock 
+ everything as a product owner, as an 
+ architect, as a tech lead. 
+ and then produce a specification. Let's 
+ write this down. Let's put it in ink. 
+ And let's see from there. 
+ And there we are writing a 
+ specification. 
+ And it's not finished because once we 
+ write a specification, there is a 
+ refinement phase. I will show you the 
+ refinement phase. I will probably make 
+ some edits because it's extremely long. 
+ Refine my face. It's extremely long. 
+ It's not long. It's not work for me. 
+ It's work for the bot. Okay. So, I will 
+ ask the bot to verify the specification 
+ or to refine it 
+ and it will work and start over the 
+ reasoning and find mistakes and fix the 
+ mistakes early before it codes. Refining 
+ is fixing mistakes before you code. 
+ That's another particularity of AI code. 
+ It will fix the mistakes in advance. 
+ Okay, it's very important. If you don't 
+ do this on complex features, you don't 
+ need it to do it all the time, but on 
+ complex features, you need to refine and 
+ more than once you need to refine many 
+ times. 
+ This is all explained in the help. 
+ There's a 
+ the help is this button. Okay, there is 
+ um 
+ a page called specifications 
+ where I explain all this. Okay, 
+ but I I will do it in front of you. You 
+ can see what I mean by that. 
+ mine. 
+ Ah, 
+ let's move this one. 
+ Let's 
+ make it difficult. 
+ It's out of time. 
+ He's out of time. 
+ It's my game. 
+ my game. 
+ Okay, 
+ we have a specification. 
+ So in context, 
+ user need immediate feedback about how 
+ close a chat session 
+ without opening a popup blah blah blah 
+ blah blah. 
+ Real pruned context size that would be 
+ used on the next. Yes. 
+ No work in error. Okay. Only extra 
+ numbers. 
+ One extra number only in the per turn 
+ usage back. That's very important. No 
+ extra baseline or multi-run formulas. 
+ Only one simulation estimates may be 
+ calibrated. 
+ All message bubble, no thinking. 
+ Excellent. 
+ The user expressed the following needs. 
+ Add a visible context indicator control 
+ inside the mini toolbar below each 
+ assistant. Answer visual format. 
+ Compact progress bar. Look like control 
+ width. 
+ centered label 
+ fill color 
+ max value. 
+ Compute one number calibrated input size 
+ that would be sent if the user sent an 
+ empty message immediately after the 
+ assistant message. Applying all pruning 
+ to creation rows as in a real provider 
+ call. 
+ Store that single number. 
+ Yes. 
+ Yes. Testing placement. 
+ Yes. 
+ Indicator is purelyformational. 
+ Okay. I don't care. 
+ Chosen method overview. So context 
+ is the context 
+ usually it's from a product owner point 
+ of view objectives it's what I asked 
+ here user express the following needs 
+ this is what I can ask during 
+ refinements 
+ for example 
+ if I choose to refine and I write here 
+ yada yada yada 
+ It will write here yada yada yada. 
+ Okay, 
+ that's how it works. 
+ And this is what AI code has inferred. 
+ Chosen method overview is how it will be 
+ done. An overview. 
+ Okay. 
+ So at the end of each assistant turn 
+ computer persist exactly one new usage 
+ number. 
+ Okay. 
+ Semantics. 
+ Yes. 
+ It will be sent if the user 
+ perform one simulated provider context 
+ build. 
+ Okay. Then it will say the file list. 
+ Usually I don't read this. It's boring. 
+ Unless there's something wrong. 
+ The detailed file list. You can read it 
+ if you want. 
+ It says what it will do on each file. 
+ Only 13 files. That's very good. 
+ So this is interesting. Recap. 
+ This is what I read. 
+ F created only test file modified 
+ regression risk factor 37%. It's quite 
+ low. 
+ Summary. If you don't have time, you 
+ read just the summary 
+ display immediately at least one. 
+ It looks good. There's only one thing. 
+ It didn't say that 
+ it needs to account for system prompt 
+ and 
+ and tool use. It's not written in the 
+ specification. So 
+ I will say make sure 
+ your 
+ context 
+ size simulation 
+ I think it does but I will make sure 
+ includes 
+ the system prompts 
+ the tools definitions 
+ and everything 
+ as in a real simulation. 
+ I think he does and I may I put write it 
+ in the spec so there is no ambiguity. 
+ So I click 
+ refine 
+ instruct the AI to perform an additional 
+ analysis to check and improve the 
+ specification. 
+ Optionally modifying it using the text 
+ input below. Okay. Run this prompt here 
+ or in a new chat. 
+ So when you click generate it will copy 
+ to clipboard 
+ a prompt 
+ that I can paste here and I or I can 
+ paste it in a new window. 
+ Okay. If you paste it here it will be 
+ faster and check less because it has 
+ information here. If you paste it in a 
+ new window it will be something 
+ completely new. It will recheck 
+ everything. 
+ Um, 
+ usually when I want a change, I put it 
+ in the same window 
+ or in a new window to make a full 
+ verification. 
+ It depends. 
+ There's no clear rule. You see, it's a 
+ very long prompt. It could it's a it's 
+ formed with XML tags. 
+ Um, there is the specification 
+ in full. And then 
+ there is a work to do. 
+ And here it explains 
+ how to refine. It's not interesting 
+ and stuff and my special instructions. 
+ So I will send this and I will refine 
+ the specification once. It will do as I 
+ said and check the specification. 
+ It will output the new specification 
+ and a table of the changes. 
+ I don't read the new specification. What 
+ I did now to go through the 
+ specification, 
+ I don't do it when I refine. I read just 
+ the changes. 
+ I don't care specification. He writes it 
+ for himself. 
+ But I read just the changes. 
+ So it will take some time. 
+ It's a 
+ AI code is not fast. 
+ It's not a fast uh software. 
+ You don't get your result fast. It's not 
+ made for prototypes. 
+ It's made u 
+ for real life applications. 
+ Okay, so AI code is a real life 
+ application. It's not a prototype. It's 
+ not a toy. It's half a million lines. 
+ It has an orchestrator. It has a three 
+ providers, one local engine with lama 
+ CPP, bring your own key. It has a a 
+ cloud engine on Amazon with AWS Lambda 
+ and Enthropic code. 
+ Uh it has a streaming um front end. 
+ It has a bus system, an RPC. 
+ Uh 
+ it's a big app. 
+ It's not a toy. Okay. So, um 
+ I cannot use an agent to program AI 
+ code. It's impossible. I can program it 
+ manually. If I have employees, I would 
+ need 
+ four squads 
+ of five people to do this job. 
+ Um, 
+ AI code is very powerful. Okay, 
+ it's very powerful. It does a lot of 
+ work. 
+ It does it in a sharp way. 
+ Um, if you're thinking why should I use 
+ AI code and not another tool? Well, show 
+ me another tool that does this 
+ doesn't exist today. The only tool in 
+ the world where you can write a real 
+ application 
+ and have decent code and control the 
+ architecture. 
+ It's AI code. 
+ I'm sorry to say it. I'm a braggger, but 
+ it's the only software in the world that 
+ you can use 
+ to maintain and create production grade 
+ applications. 
+ And I'm speaking, we're in February 
+ 2026. 
+ It will not be the case in one year, two 
+ years, but today 
+ there is no alternative. It's a 
+ monopoly. 
+ And uh as I'm speaking, I released it uh 
+ three days ago. I have almost zero 
+ downloads. It's sad. I have no authority 
+ in this game. I'm not Google. I'm not 
+ Anthropic. I'm not OpenAI. I'm not 
+ Microsoft. I'm just a guy who made the 
+ best tool in the world and no one knows 
+ except me. 
+ But uh I don't know how many people can 
+ be there on the video after 
+ two hours. But if you're there 
+ um you know and maybe uh 
+ maybe you're 
+ a business angel. Are you a business 
+ angel? 
+ Help me. 
+ Help me. I can't do it alone. 
+ Maybe you work at U Open AI. Help me. 
+ I can share whatever I have. 
+ Help me develop this concept. I cannot 
+ do it alone. I can only program. 
+ I cannot do everything. 
+ So, if you're someone that has the 
+ authority I'm lacking, and if you're 
+ seeing this video for two hours, I doubt 
+ it, but who knows? Maybe you do exist 
+ and you're there, contact me and help 
+ me. Help me succeed. 
+ This is how an AI assistant should be. 
+ This is how it should be because the 
+ models are not smart enough. 
+ The models cannot do this job. AI code 
+ with the right models can do this job. 
+ This methodology ISC can do the job. It 
+ can really do real life applications. 
+ It can. I'm doing it. I'm proving it in 
+ front of you. I'm here live coding and 
+ proving that it's possible. Don't tell 
+ me it can't. Don't tell me it's not 
+ possible if I'm doing it. 
+ Okay, I'm doing it right now. 
+ So, if you're that kind of guy that has 
+ this kind of authority and you see my 
+ video, please contact me. I'm very open 
+ to sharing, working with people. 
+ I don't need much money. Um, I'm a 
+ passionate programmer. I love my job. I 
+ love programming. I programmed all my 
+ life. All my life since I'm 12 years 
+ old, I've been doing this 
+ and I want this project to succeed 
+ no matter the cost. 
+ I sacrifice anything and everything to 
+ make this project succeed. If you can 
+ help me, 
+ make your demands. 
+ So, where are we? 
+ We're on the first refinement. So 
+ I I will not refine many times because 
+ it's only 13 files touched. 
+ I was expecting 60. 
+ Um, 
+ it's not so complicated. 
+ Um, the only thing I didn't check I 
+ forgot to check 
+ is where it is. Oh, yeah. There's one 
+ thing I I disagree with and I should 
+ have written it in the refinement. I 
+ don't know if I cancel this query 
+ or if I refine another time. I could 
+ cancel here. 
+ And there's a button edit last prompt 
+ here. 
+ But 
+ I will let it finish and I will refine 
+ another time. What I forgot 
+ is that 
+ the subprogram that makes this 
+ simulation, I want it in a new file. 
+ I don't want it stuffed 
+ into existing files. I want something 
+ modular. 
+ Okay? I don't like large files. 
+ So I forgot to say to AI code 
+ that the majority of the new code that 
+ runs this humulation 
+ I want it in a new file placed in the 
+ right place wherever it wants. I I trust 
+ it to find the right place but I want a 
+ new file or something 
+ in the back end in the orchestrator. 
+ So, I completely forgot about this. 
+ Since it's been running for 9 minutes, 
+ I will let it finish and I will refine 
+ one more time. 
+ Excellent. 
+ I will just read the difference. I will 
+ not read the specification. 
+ I almost never do this. It's too much 
+ work. It tells me what it changed. 
+ It's good enough for me. 
+ So, it will write the new specification 
+ and then it will write a table of the 
+ changes. 
+ And this is what's interesting. 
+ It's about saving energy. Okay? We vote 
+ coding. We want to keep in control, but 
+ we don't want to waste any energy. 
+ We need that energy to win at chess. 
+ So this is what I requested 
+ and this is fix that it did 
+ here. It found the mistake. It fixed it. 
+ Fixed the mistake. 
+ fixed the mistake. Clarify the 
+ specification. 
+ So let's check the tokens count. Good. 
+ Because this is not pruned. Okay. So we 
+ have a lot more. 
+ Let's refine again 
+ and let's ask. 
+ So you see what I put in refine? He put 
+ it here. This is the list of what I put 
+ in the refinements. Okay, it will keep 
+ this here. 
+ So I will say 
+ whatever code 
+ is required 
+ to perform this simulation 
+ and I speak only 
+ about the extensions 
+ orchestrator. 
+ I 
+ want it 
+ to be 
+ mainly 
+ and 
+ as much as possible 
+ without 
+ destroying the architecture 
+ in a 
+ New file 
+ or 
+ something 
+ preferably 
+ programmed 
+ with OOP and composition because I use 
+ very much OP and composition 
+ in the orchestrator. 
+ So well that's enough 
+ absolutely. 
+ So let's generate this refine. Let's do 
+ it in the same window. 
+ It will take about 12 minutes 
+ and it will also check mistakes at the 
+ same time. 
+ Let's do this. I'll be right back. 
+ I need to go downstairs and buy 
+ something. 
+ I will just put the reasoning trace 
+ before I go. 
+ Come on. Reason, my friend. 
+ Reason. 
+ Reason. 
+ Now 
+ one, two, three. Now 
+ it's reasoning, but it's only sending 
+ glimpses of its reasoning. I don't get 
+ the full reasoning. Open AI sends some 
+ summaries that I print on the screen. 
+ I don't have everything. It would be too 
+ much. I I don't know how it reasons. 
+ Maybe it's not even with words. It's 
+ with signs or neuronal networks. Who 
+ knows? I have no idea how this works 
+ inside. 
+ Would be fun though to know 
+ in another life. 
+ Come on. Reason. 
+ It's been two minutes. You You don't You 
+ don't reason. 
+ Send me something. 
+ Oh no. Directly. 
+ Oh, I don't even have time to do 
+ anything. 
+ That was way too fast. It's because I 
+ didn't change window. It used its 
+ previous reasoning and speech. 
+ That's why you often need to change 
+ window to refine. 
+ That's why 
+ it it didn't check everything. It did a 
+ very shallow check. If you want a 
+ thorough check, you need to change 
+ window. And we will change window now. 
+ But probably I won't have any more 
+ instructions. There should be one new 
+ created file. There was two tests. There 
+ should be one that I requested right 
+ now. 
+ And there should be 14 files I guess. 
+ So arc as stream next empty prompt prune 
+ tokens estimator. It's a it's a long ass 
+ name but okay that's fine. 
+ Let's see how much it refined. 
+ Move the simulation logic 
+ a few fixes. So let's do at least one 
+ more refinement 
+ and let's do it in a new window 
+ to have a 
+ complete work this time. 
+ So you see when it write RS it means 
+ refined specification. 
+ It can write CS for code specification 
+ or VS for verify specifications. These 
+ are abbreviations I use. It's written 
+ here too. Okay. When there are 
+ specification, it writes them in the 
+ chat history. You can see there here 
+ another. 
+ Okay. 
+ And you always have the the search. You 
+ can type the specification name. It will 
+ find it. 
+ But we don't need to do that now. We're 
+ just working on one job. 
+ Okay, I'll be right back. 
+ Still thinking. 
+ Let's show this. 
+ Oops. 
+ Yeah. 
+ So you see it doesn't take two minutes. 
+ I use the new window. 
+ It doesn't know what I'm talking about. 
+ It's 
+ rechecking everything. 
+ That's why the specification has so many 
+ details. It's to be able to change 
+ window because there is always this 
+ context problem. 
+ AI code will compact the context and 
+ continue conversation. But it's not so 
+ good. 
+ It's not ideal. If it can be avoided and 
+ here it can by writing a detailed 
+ specification 
+ so it can reprocess everything. 
+ This is the way to go. 
+ My hair is playing stupid. 
+ There I have a Oops. 
+ Hey, come back. I look like a half 
+ devil, you know. 
+ have one horn. 
+ It's better. 
+ I don't know how many refinements I will 
+ do. 
+ Uh sometimes I do it until it doesn't 
+ refine. If you do it many times, it will 
+ say in the end no refinements were 
+ necessary. 
+ It's rare because it always finds a 
+ little thing, but not always. Um, 
+ sometimes there will just be minor 
+ adjustments. 
+ Usually it's good enough to stop. 
+ Sometimes there's a major adjustment, 
+ but you read it and it's stupid. 
+ So, it's nitpicking. When you see it's 
+ nitp picking, you can stop refining. 
+ You're not forced to refine. 
+ I do it. I get better results. I tried 
+ with and without refining for complex 
+ request. 
+ Uh yes, you should refine many times. 
+ This one is not as complex as I 
+ expected. I expected it to traverse all 
+ the orchestration, but it seems like my 
+ architecture is better than what I 
+ remembered because if it only touched a 
+ few files, 
+ well, it's modularity is is clean. At 
+ least for that angle, modularity is uh 
+ not so bad. 
+ The one thing I forgot to check 
+ is if it touch some specific files. 
+ No, that's excellent. 
+ Specific files are like open AI or uh 
+ anthropic code. 
+ I have a layers in my orchestration. I 
+ have one global layer 
+ for the orchestrator and I have specific 
+ layers 
+ um for specific AIS. I have three 
+ specific AIS. I have open AI, anthropic 
+ cloud and Yama CPP with chat GPTOSS that 
+ runs locally. 
+ You can test the local feature in the 
+ settings. 
+ It's um 
+ it's a demo. 
+ But you can test it if you want. It's 
+ free. If you have a good GPU, if you're 
+ a gamer, you have a good GPU, you can 
+ test it. 
+ For the sake of the video, I believe I 
+ will 
+ I will stop refining. 
+ Should be okay. 
+ Usually I would do more, but 
+ I don't know if I want to make edits on 
+ this video. 
+ I will maybe not edit and just code 
+ right after this refinement. 
+ Just for the video, 
+ it will still be a long video because 
+ after we must code, this could take um 
+ 20 minutes. 
+ We have the feedback loop. It depends. 
+ Usually when we refine a lot, we have a 
+ shorter feedback loop because it makes 
+ less mistakes. 
+ And then we have verify. 
+ I will show you verify. 
+ It's useful. 
+ This is just a move to make him lose 
+ time. I don't really care about doing 
+ this. 
+ I'm just winning a few seconds. 
+ Maybe one second. 
+ Let's 
+ do this. 
+ I know. Mistake. 
+ Mistake. 
+ 
+ Sorry for the slang. 
+ It's not polite. 
+ So, this is a long refinement. It's 
+ really 
+ It's really checking everything. 
+ It's new information as I said. 
+ So it's processing everything from zero. 
+ It has to understand what I'm asking. 
+ It doesn't know the project just the 
+ file names. 
+ So it needs first to check everything to 
+ understand everything and then 
+ to check that everything that's written 
+ in the spec is uh is good 
+ to make updates. 
+ has a lot of work. 
+ It's very smart, huh? 
+ It can go through a cut base like this 
+ just with a text. 
+ It's amazing what these animals do. 
+ They're incredible. 
+ the the level of reasoning and the 
+ quantity of information it can absorb 
+ and make sense of all this. 
+ If I had to do this job to refine this 
+ specification and I don't know anything 
+ about it, 
+ wow, 
+ that would be 
+ that would be the hell of a task. 
+ I I would do it. I would go through each 
+ file like it does and 
+ I would take notes and I would do it. 
+ I could do this job without the AI. 
+ But uh 
+ I would suffer. 
+ I hope it's not crashed because 
+ it doesn't say anything. 
+ No, it's not crushed. 
+ That's a lot of changes. Normally I 
+ would refine again. 
+ I shouldn't stop there, but 
+ the video is 2 hours 40. 
+ I don't know if anyone is still there. 
+ Um, 
+ let's code. 
+ How is the memory doing? 
+ Let's code. So to code, I click code. 
+ I can write here something if I want 
+ strict mode. 
+ Well, if you use strict mode and 
+ anything changes 
+ because it made a mistake, it will not 
+ fix it. It will stop. So it can be 
+ useful if you want to be strict and you 
+ prefer to fail. 
+ But I don't want to fail here. 
+ I will use this prompt. 
+ So how does it work? There's a wrapper. 
+ There's the specification. 
+ And then there's work to do 
+ and some constraints 
+ and no additional instructions. 
+ So, let's code. 
+ I could have used another window 
+ or this one. 
+ Depends on the context size. And 
+ if you want to change window, I don't 
+ know. I I'm still trying to figure out 
+ when I should change window or not. 
+ Usually on the last refinement, I code 
+ in the same place. 
+ But u I'm not sure if it's a a 
+ difference. Probably not. 
+ So it will think for a while and then it 
+ will start to code 
+ everything that's obvious in one sitting 
+ and then it will 
+ check what it coded and make some 
+ adjustments 
+ and check again and adjustments again. 
+ all this in the same answer 
+ and you will see it live on the screen 
+ and uh finally it will decide u 
+ hopefully that it succeeded 
+ and it will output 
+ a message 
+ and the compliance table. It's 
+ important. Everything must be green 
+ or you can refuse or ask it to finish. 
+ And then it will propose a commit name 
+ and it will sing a little song. It's the 
+ signature move of AI code. Every time it 
+ codes something, 
+ it sings a victory song about it. 
+ Okay? 
+ It loves to sing. It can't help It can't 
+ help to sing all the time. 
+ I should have called it singing code. 
+ It just loves to sing. 
+ And I love AI code song. They're fun. 
+ You will see it's fun. 
+ since I didn't put strict mode. If it 
+ did some changes 
+ while coding it will say. So I had to 
+ change this and that. It's always 
+ transparent. 
+ It's not hiding it. 
+ It's dirty stuff. It's showing it. I 
+ made sure AI code would uh not hide 
+ stuff. 
+ I hate it when AI lie and hide. I hate 
+ it. 
+ I hate it. 
+ It will not do that. 
+ Wow. 
+ So, it's still not coding. 
+ It's diet soda. 
+ It's starting to plan the coding. It 
+ mean it's coding in its head. 
+ It's writing the code but in some kind 
+ of open AI buffer. 
+ I don't know how this works. if it uses 
+ files or 
+ memory spot or if it's just thinking 
+ about it. 
+ I don't have this information. If you 
+ do, please leave a comment. 
+ How does it prepare coding? 
+ I don't know. 
+ I would be interested to know. 
+ It's beginning to code. 
+ It started with the types which is uh 
+ clean. 
+ Change the types first 
+ and then uh program around. I like this. 
+ I like the way it thinks. 
+ It's doing the back end. 
+ all the plumbing in the back end. You 
+ need to pass this argument there there. 
+ It's set on autoscroll. 
+ It's this button. If you don't want auto 
+ scroll, you uncheck this. 
+ it will stay where it is and you scroll 
+ manually. 
+ This is the new file that I asked to 
+ program in 
+ object- oriented programming. 
+ This is more plumbing. 
+ It's doing all this according to the 
+ specification. 
+ This is front end 
+ react 
+ CSS 
+ test. 
+ It's looking very good. 
+ I like what I see. I I don't read 
+ everything, but 
+ from far it looks good. 
+ This is the new test. 
+ It looks like an integration test with a 
+ lot of mocks. I like this. 
+ It detects regressions. I like this. 
+ I would use a few more comments, but it 
+ doesn't like to write comments in the 
+ test. 
+ Even if I ordered it too, it refuses. A 
+ few comments. Thank you. Thank you. AI 
+ code. 
+ It doesn't do everything I say. 
+ It has its own temper. 
+ It's a wild animal. 
+ So, this was the first pass. 
+ Okay. 
+ It's regurgitated everything it could in 
+ one pass. Now, it will start to 
+ to make adjustments. 
+ It's double checking itself. 
+ It's searching if it forgot something. 
+ It can use 
+ just read the files or sometimes it uses 
+ the index 
+ to search for terms if it forgot to call 
+ site or sometimes it can use git in a 
+ weird way that I didn't instruct but 
+ sometimes it uses git to make searches. 
+ It's weird. 
+ It's not tamed. 
+ It's wild. 
+ One default of AI code is it doesn't 
+ show the thinking trace on the side like 
+ chat GPT. It shows it on the top. So now 
+ it's thinking but we we can't read it. 
+ We would have to scroll up. 
+ But I don't like to do that. It's It's 
+ doing its job. 
+ I just let it finish. 
+ It should take 
+ between five and 10 more minutes, I 
+ guess, to have a first shot. And after 
+ we will do the feedback loop. 
+ It could take time. I don't know. 
+ Here it found some mistakes. It's in in 
+ its own code. 
+ So it's fixing its own code. 
+ When the query will be finished, all 
+ this will be grouped. If it has written 
+ a file in several settings, it will be 
+ grouped on the screen. So you have just 
+ one button. 
+ AI code is doing this. 
+ So this one will definitely be grouped. 
+ Here 
+ it made a two error happens. It's a bug. 
+ It will fix itself. 
+ It fixed. 
+ It's rerunning the search. 
+ It's searching if there are as any 
+ because I forbid it in the settings. is 
+ I said don't put as any 
+ because uh chat GPT writes code in 
+ Typescript with as any and I hate it. I 
+ hate it. I there's a typing system for a 
+ reason. 
+ Okay. So it likes to hack and put as any 
+ and then you don't get compiling errors. 
+ I hate this. I forbid it. So it's 
+ paranoid and it search if it wrote any 
+ as any. 
+ Oh Joel forbid this. If I put as 
+ any, he's going to be angry. Let's 
+ check. 
+ This is very similar to a coding agent. 
+ Only you see on the screen streaming. 
+ This is a difference with AI code. I 
+ show everything on the screen. All the 
+ tool calls, all the thinking, 
+ the mistakes. 
+ Uh I don't just show a clean PR. I show 
+ as it is. You see it row as it is. 
+ This is the second pass of fixing 
+ itself. 
+ It finds some mistakes 
+ or 
+ here. It's not a mistake. It's 
+ some bad writing 
+ with a stupid cast and it it does it the 
+ proper way. 
+ It writes clean code. That's why it's 
+ doing this this last. 
+ You see it was working but it say hey 
+ this is not clean. That's not clean 
+ code. Stupid cast with unknown when you 
+ can just use the typing system and get a 
+ clean compiling error if something is 
+ wrong. 
+ AI code does this. It writes clean code. 
+ It spends time 
+ to rewrite 
+ here. It's searching if it forgot 
+ something. 
+ If it forgot the call site 
+ And it's done. 
+ Lovely. 
+ So, it's writing a commit name, a 
+ compliance table, 
+ and it forgot to sync. Oh my god, I 
+ can't believe this. 
+ It should sing. 
+ Oh my god, 
+ it's so undisiplined. 
+ Where's my song? Oh, bro, what did you 
+ do? 
+ Ah, 
+ I will close and reopen this. You don't 
+ need to do that. It's because I'm 
+ running uh 
+ with limited memory. I'm doing weird 
+ things with my computer. 
+ So, 
+ um 
+ let's see. Oh, we're close to the limit. 
+ So, there are 18 files. This is an 
+ indicator. when I will process the 
+ files, it will increment that number. It 
+ shows me if I forgot a file. I don't 
+ have a button to accept all the changes. 
+ It's on purpose 
+ because uh 
+ I refuse to put that button. I don't 
+ want it because I would use it and I 
+ wouldn't care. 
+ I know myself and I know you. You would 
+ use it. So we should at least have a 
+ glance at the files one time. It's not 
+ so bad. There are 18 files. This is a 
+ button to open all the modified files to 
+ get the compiling errors. We will use 
+ it. 
+ So what we do, we go to the top 
+ and we accept the changes or we can 
+ review. We saw that in the previous 
+ video. I will not do this here. So this 
+ yes I accept. 
+ I will accept more or less everything. I 
+ think I will read very fast. 
+ Just look if I don't really read the 
+ code. I 
+ check it's not doing anything crazy. 
+ Just fast, you know. 
+ I don't need to read everything. 
+ If you want to go fast, you can do like 
+ this. Accept down. 
+ except down. I will read this one a 
+ little bit. 
+ That's the central class. It's short. I 
+ like it. 
+ I don't know why it touched this file. I 
+ don't even know what is this file. I 
+ don't care. I'm V coding. 
+ Good. This is front end. 
+ Front end. This is where 
+ whatever 
+ CSS 
+ test 
+ test 
+ and all this is grouped. It means you 
+ can look at it if you want but it's 
+ already included in the previous files. 
+ So everything is okay on the compliance 
+ table. It didn't make any change. You 
+ see we have 18 out of 18 means we 
+ tweeted everything. I will take 
+ the commit name 
+ and I will open all the files to get the 
+ compiling errors. 
+ So this one it's not a compiling error. 
+ It's VS Code. 
+ Oops. 
+ Okay. 
+ This one. Yes, there are compiling 
+ errors here. 
+ Type never. 
+ So there's a typing error here and here. 
+ Oh, I know why we have this. We should 
+ remove expect from here. 
+ So there are just errors in this file. 
+ Let's fix them. 
+ So I will for the feedback loop I will 
+ stage 
+ and ask a fix by attaching problems 
+ while the file is opened. 
+ And I will ask for a fix. I don't need a 
+ message. He will receive this attach 
+ problems. 
+ And as as I explained in the last video, 
+ why I do this manually? Because whatever 
+ it does to fix this, I want to control. 
+ Okay? Because an AI is very focused. It 
+ will do anything to fix this. It's its 
+ task. 
+ And if necessary, it will break the app. 
+ And I want to make sure it does not 
+ break the app. I want to fix. 
+ And this is a typing problem. I expect 
+ it to declare some types and make some 
+ conditions 
+ and not disgusting cast. 
+ I will be careful what he proposed here. 
+ I will not accept anything. 
+ Remember 
+ when it writes this, 
+ it writes in a buffer. It didn't touch 
+ your files. 
+ I touched my own files. I clicked 
+ accept. I wrote them. 
+ There's a virtual file system in AI 
+ code. 
+ It writes on the virtual file system. It 
+ cannot write. 
+ It cannot write anything or execute 
+ anything or change anything. It's 
+ powerless. 
+ It's not the next Skynet. 
+ It cannot do anything. Can just talk. 
+ So the subtyping 
+ two marks infer blah blah blah blah blah 
+ blah blah blah. Ah here we have a song. 
+ Thank you. 
+ So let's accept 
+ compile. 
+ So we can stage this. The feedback loop 
+ is not finished 
+ because we need to run the test. 
+ Normally there's nothing in ship but 
+ let's try. 
+ Okay, 
+ let's do the front end. 
+ Failures. Failures. Oh my god. Oh my 
+ god. 
+ Wow. 
+ That's a lot. 
+ Oh my god. 
+ With MCP 
+ bus not initialized. What the hell 
+ is going on? 
+ What is this? 
+ Let's run it in. 
+ Maybe I forgot to compile something. 
+ It's a complex project. It has a lot of 
+ code generation. 
+ I don't think it changed an endpoint 
+ though, but some types. So maybe I need 
+ to generate code. 
+ How is the memory doing? 
+ Oh, it's high. Uh, no. So, let's try 
+ again. Maybe. Um, 
+ no. No. There are these mistakes. 
+ Six tests failed. Oh my god. 
+ It seems always the same mistake. 
+ unexpected URL. 
+ Let's start with this one. 
+ Oh, you know what? Let's do the back end 
+ first. 
+ Let's 
+ do a lint. 
+ Thank you. 
+ My memory is very high. 
+ I'm using WSL. 
+ I feel I will get a crash soon. 
+ It's okay. Yeah. Code can recover from 
+ crash. 
+ So, let's test this 
+ the back end. 
+ Yeah, it's the new test. 
+ Let's start with this. 
+ Oops. 
+ Wrong button. 
+ An agent would do that automatically. 
+ I know it's easier. 
+ It would take more time to deliver the 
+ code, but it would have run the lin the 
+ test and fixed everything. 
+ But I don't like that. 
+ He's starting to know how I think now 
+ after all these hours of video. 
+ I need the maximum quality in my work. 
+ I agree to pay some hours to pay some 
+ money. 
+ I don't agree to lower the quality. 
+ And if you want to use the I code, 
+ you have the same mindset. 
+ You will pay whatever needs to be paid 
+ and get the best quality. 
+ I've been programming for nearly 40 
+ years. And what takes time? 
+ It's not to write a program. It's 
+ maintenance. 
+ Especially with turnover 
+ when you forget. 
+ This is what costs. 
+ This is the real cost of software 
+ development. It's maintenance. 
+ If you need to sp to spend five times 
+ the time you need to write the program 
+ and the maintenance is easier, you have 
+ more commands, you have a better 
+ structure, it's worth it in the long 
+ run, you win. 
+ I've been doing this app for seven 
+ months. I wrote half a million lines 
+ alone in seven months. 
+ Yes, I'm done fast. Okay, this method it 
+ seems slow now but in the long run 
+ compute in your head half a million 
+ lines 7 months. Yeah, it's fast. That's 
+ 200 people. 
+ Okay, that's a company with 200 people. 
+ So yes, it's fast. This method is fast. 
+ It's blazing fast. 
+ Don't get fooled. 
+ But now it's boring and slow. 
+ Yes, it's slow in the short term and 
+ fast in the long term. It's an 
+ investment. 
+ Let's see. 
+ It's only a test. I'm not really worried 
+ about what it's going to do. 
+ make it pass. 
+ Sometimes the feedback loop manually is 
+ overkill. It would help to have it 
+ automatic, but how to decide if it going 
+ to do something bad or not? I have no 
+ way to know that in advance, so I I make 
+ it manually all the time. 
+ If I had a way to detect if it's going 
+ to do some hack, 
+ I would do it automatically when it's 
+ without hacks. 
+ I I didn't find a way. If you know a way 
+ to detect this with prompt engineering 
+ or with 
+ advanced compiling techniques, please 
+ write a comment. 
+ Teach me. I like to learn new things. 
+ That's why there is a sound 
+ here so you don't need to look at this. 
+ You can do your things and it will beep. 
+ Let's see. 
+ Good. 
+ So let's stage this and let's go back to 
+ the front end which will be more 
+ painful. 
+ This will be painful. 
+ It's really bad. It's looking very bad. 
+ Looks like a regression or breaking 
+ test. 
+ I don't know if I should send all this 
+ because it's a lot of text. 
+ Normally you must isolate. 
+ Let's do one by one. 
+ It's really looking very bad. Usually 
+ it's not so bad. 
+ Let's do just this one. 
+ You see I stage 
+ and I ask a change. If I don't like the 
+ change, I will just cancel here. 
+ You can also work with a branch and 
+ commit. 
+ It works. It's probably cleaner 
+ than what I do. If you make a branch and 
+ you commit 
+ first pass, fix this, fix that. 
+ It's clean. I I advise you to do cleaner 
+ work than me. 
+ It's a long working session. 
+ Yeah, the get catalog it's the same in 
+ several tests. 
+ Sometimes when you change a test it goes 
+ deeper 
+ in the call 
+ the imbrec itical and you need to mock 
+ more. Happens all the time 
+ and it's probably what happened. Oh, and 
+ it's fixing several tests, you see, not 
+ just the one I said. 
+ Let's accept everything. 
+ Let's run all the test. Maybe we have 
+ less errors because it fixed three. 
+ Again, this catalog thing. 
+ See 
+ this one must be the same. 
+ Is there another with the catalog thing? 
+ I could give everything but I don't 
+ want. No, this is just not initialized. 
+ This is a catalog thing. 
+ I will put that one too. 
+ Let's do this too. 
+ You can put everything if you want, 
+ but not the whole trace. Just the just 
+ the failing test. 
+ Let's do these two. They seem similar to 
+ what it has done. I will say to help it. 
+ It seems 
+ similar to what you have just fixed. 
+ Is it 
+ a little hint for the AI? 
+ I think it is similar. 
+ That's what it says. I think it is. 
+ You see when I'm working with AI code 
+ I stay inside VI code AI code 
+ I don't use anything else I have the 
+ sidebar 
+ I have the window or the windows. I can 
+ have several. Sometimes I do several 
+ things at the same time. You can open 
+ many windows, 
+ but uh 
+ yeah, I also use the command. 
+ I could do it here, 
+ but I like to have it separate. 
+ Both work. 
+ I develop exclusively with the eye code. 
+ I use nothing else. 
+ It's complete. You can attach files, 
+ screenshots. 
+ You can have as many sessions as you 
+ want. You can see the files. 
+ You can ask anything 
+ programming or not. 
+ You can chat if you want. You can speak 
+ about politics whatever 
+ it's ch. 
+ It's only ch behind nothing else. 
+ It's very good at creating applications 
+ from scratch. 
+ It will help you scaffold the 
+ configuration files 
+ to tell you the commands. It cannot 
+ execute them, but it can write them. 
+ So it says it's not the same error 
+ here. I forgot to do this. I will do it. 
+ Let's accept this. 
+ Let's accept this. 
+ It's only test. I'm not too worried. 
+ They compile. 
+ Let's run them again and let's hope it's 
+ fixed. It's not sure. 
+ Excellent. 
+ We have how many test suites failing? 
+ Only two. So we can clearly do the two 
+ last especially it's the same. It's just 
+ not initialized. 
+ I helped him instead of sending 
+ everything I send by group. 
+ I helped the bot do his work. 
+ It's faster. 
+ Less errors. 
+ I will send all this. 
+ It has not touched any code files. 
+ So I don't need to run all the test 
+ suites. 
+ The tests are independent in my app. 
+ I forgot to do this. 
+ This is a nice clean feedback loop 
+ fixing compiling errors, test errors. 
+ It's looking good. 
+ I don't like when I give it a test 
+ failure and it changes some code in the 
+ app. Of course, sometimes it it should 
+ because the test is showing an error in 
+ the app, but I don't like it. I'm very 
+ cautious 
+ when it replies a code change for a 
+ test. 
+ I challenge it. 
+ But when it fixes a test, 
+ fix the test. 
+ At worst, there's a bad test that's not 
+ testing well. The worst that can happen, 
+ it's bad, but it's it's not extremely 
+ bad. 
+ This is related to MCP O. 
+ It's weird, 
+ but okay. We change something deep in 
+ the program. When we touch the usage 
+ statistics, it's deep. 
+ So, it can have a wide range. 
+ That's why I was scared to do this. And 
+ that's why I made an idiation for two 
+ hours and I refined the specification 
+ many times and that's why I'm going to 
+ verify after because it's a change deep 
+ in the orchestrator 
+ and it can break a lot of things and the 
+ worst it would break something that 
+ wouldn't be detected by the test that I 
+ wouldn't see 
+ when I run the app. 
+ and I discover it in two months and I 
+ forgot I did this. This is a nightmare 
+ scenario. Okay, I'm trying to avoid a 
+ nightmare scenario in two months. That's 
+ why I'm doing all this. 
+ It's engineering. 
+ I overengineer now because 
+ my experience tells me this is the kind 
+ of change 
+ that can make a mess in two months. 
+ And uh I'm preemptively 
+ trying to avoid it by overgineering this 
+ So it's mocking some APIs. 
+ But why it changed only one test when I 
+ said the two test suites failing. 
+ I think it made a mistake. 
+ You see, it's not perfect 
+ because I sent it to test. But what 
+ happened? 
+ Whoa. 
+ There must be some factor in this test. 
+ There must be a factor. 
+ I don't know. You know what? I don't 
+ care at this point. 
+ It's weird. I don't understand what 
+ happened, 
+ but it happened. 
+ So, I run all the test. It compiles. It 
+ links. I will commit this. 
+ And now we will verify 
+ it's not finished. You remember in the 
+ specification 
+ you have 
+ refine code verify. 
+ We never used the verify button, did we? 
+ We didn't. 
+ We're going to use it now. 
+ After coding is finished, instruct the 
+ AI to verify the quality of the 
+ specification implementation. 
+ This is how much we overengineer in AI 
+ code. 
+ Let's copy this prompt. 
+ Let's check how much memory we have. 
+ Excellent. 
+ Let's open a new chat 
+ and let's paste the verified prompt. 
+ You didn't expect that, huh? You thought 
+ we were finished. 
+ No, 
+ we're not finished. 
+ So as always it's a XMLri prompt with a 
+ wrapper the specification and a work to 
+ do. It's always the same. 
+ What does the work to do say? 
+ It asks 
+ to check the code in the codebase versus 
+ the specification 
+ and it ask a question 
+ and it's always the same. You have some 
+ constraints and some instructions which 
+ I didn't ask. 
+ Let's do it. 
+ You didn't expect that. You thought it 
+ was finished. 
+ Huh? It's a surprise. 
+ This is how much I like quality. 
+ When it's finished, it's not finished. 
+ This is how you make an app 
+ that's over 500 files big. 
+ When it's over 500 files, it becomes a 
+ different sport. You cannot work the 
+ same with 500 files, 1,000, 2,000, 
+ 10,000 files. You cannot work the same. 
+ You don't know everything. It doesn't 
+ fit in your small context. 
+ You overflow. 
+ You need methodology. 
+ You need to use 
+ principles like solid like clean 
+ architecture 
+ like modularization interfaces. 
+ You need to use a data or RPC bus. 
+ You need to split the things because 
+ it's too complicated and you need 
+ methodologies 
+ and AI code is made for this kind of 
+ application. The one that's over 500 
+ files. You can use it for a small 
+ project 
+ but you can also use clothes code. It 
+ will write a nice demo. Now if you 
+ expect your small project to become big, 
+ I advise you don't use clo code. 
+ better program by hand. 
+ If you're doing a launch project, 
+ it's just my advice, just my two cents, 
+ you're going to fail. 
+ There's going to be an AI bubble, but 
+ it's not what you think. It's not what 
+ the investors put in the companies. It's 
+ the people who used agents, automatic 
+ agents to write their programs. These 
+ people will have problems in one, two, 
+ three years. And this will be the real 
+ AI bubble 
+ when they realize that they use the tool 
+ that's made to write a toy and a 
+ prototype and that's not made to write a 
+ real big application 
+ and they will hurt. 
+ except you because you're watching a 4 
+ hours long video to learn how to use 
+ a smart chatbot 
+ that writes quality code 
+ and you will not have this problem. 
+ You will not have the AI bubble, the 
+ real AI bubble. It will not touch you. 
+ You're safe. 
+ Normally I would perform several 
+ verifications 
+ but for the video I will do just one. 
+ But you can do it again. 
+ Let's read 
+ blah blah blah blah blah. 
+ So you have visual indicators. When it's 
+ green, you don't need to read 
+ what is green is green. 
+ Two realistic audit points. Terminal 
+ stop coverage edge case. 
+ This is correct. 
+ You hate it. 
+ I don't really care about this. 
+ It's nitpicking. 
+ needs audit. 
+ It could say it's good. It's nitpicking. 
+ Audit. Okay, we can do the audit. 
+ Robustness. Yes. Okay. 
+ Okay. Let's do everything. 
+ But it's neat. 
+ Okay. 
+ Usually uh I would do just one 
+ verification when it's like this because 
+ for me it's 100%. 
+ But uh 
+ let let's accept. Huh. It's just 
+ a bot working. It's not me. 
+ Dumb boss. 
+ It's not resigning. I I wouldn't 
+ continue this game. Some people are 
+ brave. I can make fun, but he he's more 
+ brave than me. I would never continue 
+ this game 
+ ever. 
+ But okay, sometimes I lost in such 
+ situations. I mean, 
+ yeah, 
+ he's brave. Beer cheese guy. 
+ You're brave, man. I respect you. 
+ I respect your spirit. You're a fighter. 
+ I don't think it will work today, but 
+ you're a fighter. 
+ Ah, you see, I should have done this. 
+ I'm stupid. 
+ I'm stupid. 
+ Let's check him. We will put here. No. 
+ Oh, okay. 
+ Okay. 
+ Let's be careful with the time. I could 
+ lose on time. 
+ Let's exchange rooks. 
+ No. 
+ You see, he's good. He's a fighter. 
+ Okay. Good spirit. Be a cheese guy. 
+ You earned my respect. 
+ You almost did it. 
+ I will have to run the test again 
+ after this. 
+ So you see this is when it reads the 
+ file. If it reads partially, 
+ you see the lines here. 
+ This is when it's searching the file 
+ system. It has several tools. This is 
+ fine. 
+ It has three list and 
+ globe. 
+ Um, 
+ this is globe 
+ except Oh, yeah. It ch a star here. 
+ This is a search index search. 
+ The index is uh in your file system. 
+ It's not in the cloud. You're safe. 
+ AI code is uh very private software. It 
+ puts the maximum 
+ on your disk. 
+ The chat history is on your disk. All 
+ the indexes are on your disk. 
+ It sends the minimum. 
+ So it's very private 
+ and yet it has a very powerful index. 
+ Extremely powerful. 
+ It's a multi-index. 
+ I don't know why it's changing all these 
+ tests. 
+ It's adding test it seems. 
+ It's weird. 
+ I don't remember asking for this. 
+ I could refuse all this. 
+ I will read what he says. 
+ This is going to be a problem because we 
+ have another feedback loop now and 
+ we haven't even tested the feature yet 
+ manually. 
+ I hope it works. 
+ I will get to the end of this. I will 
+ finish 
+ So 
+ he added an end to end test. 
+ Okay, 
+ I agree. 
+ I agree that you do that. 
+ Let's see if there are compiling errors. 
+ No. 
+ Let's run all the tests. Front end 
+ back end. 
+ Fingers crossed. 
+ Excellent. 
+ I will accept this. 
+ I will commit. Amen. I will not make a 
+ new commit for this. 
+ I force push. 
+ Now 
+ before doing the manual test, I will ask 
+ one more thing to AI code. And this is 
+ the right window to do it because it has 
+ the context of this specification. 
+ I will ask 
+ one more thing. 
+ The 
+ sort of 
+ context 
+ size bar 
+ was implemented 
+ directly in the mini menu bar. 
+ Is it feasible 
+ and 
+ reasonable 
+ to extract a separate 
+ React 
+ component? 
+ I hope so 
+ because I prefer 
+ clean architecture 
+ even 
+ in the front end. 
+ Something I forgot when I did this back. 
+ But if it's an issue, 
+ don't hesitate 
+ to tell me about it. 
+ If I can make this cleaner, 
+ a little more modularity. 
+ It's a little followup, surprise 
+ followup. I 
+ thought about this 
+ because I I made him do a separate 
+ orchestrator class and not a separate 
+ React component. 
+ Yes, it's feasible. Reasonable. 
+ It's reasonable. The only real gotcha. 
+ Yes, of course, you must make a new CSS. 
+ Let's write a small specification. 
+ We will not refine and do all this for 
+ this little change. It's just a refactor 
+ very local in the front end. 
+ I could have asked to code directly 
+ when it's not absolutely trivial. I like 
+ to ask a specification. 
+ I will not read it 
+ because I already asked what I want. But 
+ he will make a double thinking. 
+ AI code will double think it 
+ better quality. 
+ It cost 5 minutes and 
+ maybe 30 cents 
+ in AI code credits in sorry in open AI 
+ credits. 
+ In my opinion, it's worth it. A little 
+ cherry on the top before 
+ before testing 
+ for real because we will test for real 
+ this after. 
+ I will compile AI code 
+ and I will 
+ have a little conversation with the code 
+ and see if the context uh 
+ if it's good. If we get this little 
+ progress bar 
+ here, 
+ that was what what we wanted. This 
+ little progress bar here. 
+ You can always choose to stay in the 
+ same window to change window. It depends 
+ the context, the context size. If it 
+ would be confused here, it would not be 
+ confused. It's the opposite. It would be 
+ in the right context to do this job. It 
+ needs to search less. It already knows 
+ what I'm talking about. 
+ Less research. 
+ We did very few things on this page. 
+ We are far from the context limit. It 
+ will not compact. 
+ In this case, it's uh good to do it 
+ here. 
+ I will just check check that it creates 
+ a new CSS module file 
+ because I don't want CSS shared. I want 
+ each file to have its own CSS module. I 
+ wrote this in the settings 
+ here 
+ somewhere. 
+ It's written 
+ here 
+ CSS modularity each component x.tsx 
+ must import only x.module.css 
+ noodule.css 
+ shared between components. 
+ So I will just read the summary. 
+ Extract dedicated component blah blah. 
+ Excellent. 
+ Created file it creates this module. 
+ CSS. 
+ Why it creates this? 
+ It creates a hook. 
+ What is in this book? 
+ This is weird. 
+ A small hook. 
+ Okay. 
+ It did more than what I asked. It 
+ extracted a hook, but I like it. It's 
+ not what I asked, but I 
+ I could have asked this. I like it. It's 
+ good anticipation. 
+ I agree. I could refine and forbid it, 
+ but uh I like that it extracted a small 
+ hook for this code. 
+ It's clean. 
+ And after we will I will make a new 
+ feedback loop for this 
+ hopefully fast. 
+ And after we will test the feature and 
+ if there are bugs 
+ we will ask a fix probably in this 
+ window. 
+ This is a good window to make this fix 
+ or it could be a separate window. 
+ But this one uh is um 
+ yeah it's good. 
+ the bug fixes on this window. 
+ If there are bugs, 
+ I don't know if there are bugs. 
+ I I didn't read all the code. I did this 
+ in front of you. 
+ I looked at it. 
+ I architected it. I put some 
+ constraints, but 
+ I'm still vi coding. 
+ So I 
+ I don't know more than you. 
+ I like that it writes comments. 
+ I like comments. 
+ I think it's important. 
+ If you don't want comments, 
+ you go in the settings 
+ and here you say no comments. 
+ By default, it would put comments. 
+ So here it's removing the CSS from the 
+ big file and putting it in a separate 
+ small file. 
+ which is what I ordered with the rule I 
+ showed you. X.tsx 
+ X.module.css. 
+ It's respecting what you write in the 
+ settings. 
+ What you write here, 
+ what you write here is used and what you 
+ write here is respected. 
+ It's important. 
+ So, let's accept everything 
+ I already reviewed. 
+ Let's check compiling errors. 
+ None. 
+ Let's run all the test only in the front 
+ end. Let's check it did only front end, 
+ right? 
+ Yeah, it's only front end. 
+ Fingers crossed. Always 
+ cross fingers when you run a test suit. 
+ Excellent. 
+ I will not do a commit. I will amend. 
+ I'm alone on this project. 
+ I force push. 
+ So, we're good. 
+ We did all that work. 
+ Now 
+ what we need to do is compile the 
+ extension. 
+ It can crash. 
+ I have some things to fix in my 
+ build.sh. 
+ It's crashing because the project is too 
+ big. I need to split some commands. 
+ If it crashes, I will stop WSL and rerun 
+ the compile. 
+ Sorry in advance. It's boring. 
+ It's some technical debt I have in AI 
+ code. 
+ The build.sh. It It crashes, especially 
+ when it links. 
+ So here it's compiling the cloud engine. 
+ The cloud engine is not available 
+ in the version you have. 
+ You have only the bring your own key 
+ engine. 
+ The cloud engine has anthropic code and 
+ goes through AWS Lambda, 
+ but I don't have the company structure 
+ to accept payments 
+ and use them to pay 
+ um AWS 
+ and then rebuild you. I I don't have 
+ this structure. I'm all by myself. 
+ I hope one day I can do that if it makes 
+ sense. 
+ like cursor they do it 
+ but today uh 
+ I can't 
+ I can only give you a bring your own key 
+ engine and a local engine 
+ that you can test if you want to test 
+ something funny 
+ to run chat GPT locally on your GPU 
+ you go There 
+ engine local 
+ you can install 
+ the engine 
+ the model 
+ if you want to have fun. 
+ So this is the last place where it can 
+ crash. 
+ Let's hope it doesn't crash. The memory 
+ looks good. 
+ We're low. 
+ It's not only about the memory. It's 
+ about WSL. And 
+ I don't know. 
+ Looks good. 
+ So this is the compiled version of AI 
+ code 
+ or interpreted. 
+ Let's try. We don't need a lot of 
+ reasoning or verbosity. 
+ We're just testing. 
+ Hey buddy. 
+ How are you? 
+ Let's see if it crash. 
+ Let's put the output. 
+ This is nothing. 
+ It's just in my old messages. They're 
+ not compatible. 
+ Let's put this. This is the network 
+ logs. 
+ Let's see. 
+ This is good. The query is sent. We 
+ don't have a crash there. 
+ If there's a crash, it should be in the 
+ end. It's the end that there is this 
+ treatment. 
+ Hey, 
+ how about that? 
+ Here it's what I asked. 
+ The difference between this and that 
+ it's the thinking. It's not only this 
+ the thinking. There's also the invisible 
+ thinking. 
+ We can see it if we go 
+ there 
+ and chat. The last one 
+ there. This is all on your hard drive. 
+ Oh no, there's no Yeah, here there's 
+ some thinking opac hidden. 
+ So this is the size difference. Okay, I 
+ think 
+ let's uh make him do a few tool calls. 
+ Load five random files 
+ in hole. 
+ It's for a test. 
+ After we will check when we rehydrate it 
+ means we close and we reopen. 
+ Hey, 
+ I like it. 
+ Here there's a bigger difference because 
+ these files are pruned. 
+ Hey, it's beautiful. 
+ It's really beautiful. 
+ Let's check the rehydration. 
+ Ah, 
+ we have a bug. 
+ We have nothing here. No stack trace. 
+ So, we have a bug. Okay. 
+ It doesn't rehydrate. 
+ What is this? 
+ Oh, this is not my bug. It's a library. 
+ Okay, let's fix. 
+ I have tested manually. 
+ Everything works 
+ except 
+ rehydration 
+ which has zero 
+ context size bar. Oh, what I didn't 
+ check is 
+ is it in the here? Ah, 
+ and it's not here neither 
+ also in 
+ popup 
+ no trace of the new format. 
+ I'm talking 
+ about a new session 
+ that had these 
+ two elements. 
+ while streaming. 
+ But when I closed the tab and reopened 
+ it, 
+ both were missing 
+ in rehydration 
+ rehydrated page. 
+ Investigate. 
+ I want 
+ a solution 
+ and I want 
+ future regression 
+ locked with a test. 
+ It kind of works. 
+ It's not bad. 
+ The back end must be fine or I don't 
+ know. 
+ It will investigate. 
+ I don't see from close. I see from far, 
+ but not uh for from close. 
+ I see blurry without glasses. 
+ So, what does it say? 
+ So, it's supposeding that it forgot to 
+ story it 
+ or maybe it's a timing error. 
+ It's testing these two hypothesis. 
+ Close 
+ this. How is the memory? 
+ No good. 
+ No good. 
+ This is a bad move according to theory, 
+ but I like it. 
+ This is risky. 
+ Yes. 
+ Hold on. 
+ I have a bad position. 
+ We'll do this. 
+ >> That's a mistake, buddy. 
+ You should go there. 
+ Not bad. 
+ I will defend like this. I have one pawn 
+ ahead. 
+ Ah, 
+ Ah. 
+ Ah. 
+ Why? 
+ Why me? Why me? 
+ Okay. Well played. 
+ Congratulations. 
+ I hope it will find a neat 
+ something missing, forgotten, not a 
+ shitty bug. 
+ It looks like the patch didn't persist 
+ something 
+ with show while streaming. Yes. 
+ It has a hard time finding the bug. 
+ Maybe we will have to do a debug 
+ session. 
+ I didn't speak about it but 
+ there is a special debugging 
+ called LLM debug 2 that I created 
+ and that will write targeted logs 
+ and it can debug by itself. 
+ It's very powerful 
+ but uh that's not for today's video. 
+ normally. 
+ But let's see 
+ if it can find the bug. It will propose 
+ LLM debug 2. 
+ And we'll have to do it. 
+ Isn't this button bigger than these 
+ ones? 
+ It's bigger. 
+ I hope I will not make it crash. 
+ Maybe that was not smart 
+ because it's really 
+ very high 
+ this WSL with AI code especially when I 
+ run it like this in interpreted mode 
+ because I have two VS code here 
+ it's a 
+ it's a lot 
+ and it's running in debug mode so with 
+ the source maps and 
+ Let's push it a little bit. 
+ I'm not sure if it's larger. Is it 
+ larger? Really? 
+ Yeah, it's it's larger. 
+ Oh, because there's a text. 
+ Oh, you know what? I will not fix this. 
+ I don't care. 
+ Ah, it's in the cloner. 
+ Yeah, we forgot to put it in the cloner. 
+ So, that's a neat mistake. 
+ Should be good. 
+ Okay. 
+ Yeah, it should be good. 
+ Okay, 
+ let's run some tests. 
+ Whoa. 
+ We're pushing it. 
+ It's a stunt. 
+ We're doing a stunt. 
+ Yeah, it's having a hard time. 
+ It's going to crash. 
+ No, 
+ I'm pushing it. 
+ I'm running two VS Code, one with a half 
+ million line projects in debug mode. 
+ And I'm running this test suit 
+ while I have the video encoder. 
+ That's probably a test that failed 
+ because it's too slow. 
+ Yeah, the feeder. 
+ It's okay. Let's consider the test pass. 
+ It's good. 
+ So, we will uh commit this. No, no. 
+ Let's 
+ You see when I tell you we're going too 
+ far on the memory. 
+ Let's close everything. You see debug 
+ adapter process has terminated. 
+ We're pushing. So, let's 
+ let's release some memory. 
+ like this. 
+ WSL shutdown. 
+ Let's check the process. 
+ Okay. 
+ Looks good. 
+ Let's recompile. 
+ How is the memory now? 
+ It's good. 
+ It's compiling only the extension. 
+ Let's see if uh 
+ this fix was enough. It found one bug. 
+ It forgot in the cloning 
+ of the orchestrator memory. It didn't 
+ clone this field. 
+ It had forgot to forgotten to do this. 
+ So that was clearly a bug. There was a 
+ regression test that passed. Now let's 
+ see if there's another bug because there 
+ could be several bugs. 
+ But for sure this was a bug that it 
+ found. 
+ No, this I don't care. I will not fix. 
+ So let's see. 
+ No, 
+ no, 
+ no. 
+ It's not enough. 
+ It's not enough. 
+ You probably 
+ found one bug, but it's 
+ Not enough. 
+ Let's see what's in the 
+ Which one is this one? 
+ Let's see 
+ if it's here. 
+ No, it's not here. 
+ No, this is the stopped session. This is 
+ the test. 
+ Ah, no. What is this one? Yeah, this is 
+ the one. 
+ It doesn't have the new field. 
+ It doesn't have it. 
+ So, let's help him. 
+ It's not persisted 
+ here. 
+ If it's not persisted, uh, it cannot 
+ rehydrate. 
+ So it sends the streaming chunk 
+ with the usage, but it's not persisted 
+ here. 
+ It's probably in the 
+ sync persistence something. 
+ I forgot the name. 
+ Uh 
+ forgot the name of this file. 
+ Yeah, it's something codec. 
+ It's in the codec. 
+ Forgot the name of this file. 
+ Chat persistence codec. 
+ It must be from here the bug. 
+ I could have told him in the message. 
+ I will do it. 
+ I will edit last prompt 
+ and say 
+ I don't know but 
+ it could be in 
+ that 
+ some things 
+ missing. 
+ Check it first. 
+ Let's put back a 
+ reasoning. 
+ Yeah. 
+ Yeah. There should be this word. 
+ Yeah. It's probably 
+ Let's see. But I I think it's missing in 
+ the codec. 
+ Wait can find input tokens here. 
+ Maybe in snake case 
+ or maybe the codec has sub modules. 
+ It's not easy. 
+ There's a problem for sure. 
+ It's not a small bug. That's the 
+ problem. 
+ In the specification, I should have uh 
+ talked about rehydration. I forgot to 
+ talk about it. You see, at the very 
+ beginning of the session when I made the 
+ prompt, I should have said it should 
+ work with rehydration. I didn't say it. 
+ And because I forgot to say this, there 
+ we are. 
+ This is a a prompt mistake at the very 
+ beginning of the session. 
+ I will not restart the session. 
+ I will recover from here. 
+ But yes, clearly I made a mistake. It's 
+ my mistake. 
+ Oh, he says it's not the codec. 
+ It thinks it has found the solution, but 
+ I'm not sure. 
+ Must have found a bug. There can be 
+ several bugs. 
+ I hope only two, but 
+ looks like it has found a bug. 
+ Clearly 
+ a second one. 
+ It will fix that bug. It will not search 
+ a fur. It's not how it reasons. When it 
+ finds a bug, it considers it's the bug. 
+ It will not search more. I will have to 
+ test again 
+ and say there's another bug. 
+ It's a patience game. 
+ There's one in the three, 
+ one in the two. So, there's none here. 
+ Let's try this 
+ memory is high. 
+ You can contact me going to help 
+ Here 
+ you have a forum here issues. 
+ Here it's the YouTube channel. 
+ You can pass test. 
+ You get badges. 
+ You can collect all the 11 badges. Here 
+ you have access to the billing. 
+ How much money you spend. 
+ That's today's session. Plus, I did more 
+ things so 
+ should be less than that. 
+ And I have a large project. It cost 
+ more. 
+ Should be less than that. 
+ Let me show you a trick. 
+ When you have a page, you have a permal 
+ link URI at the top. 
+ You can copy it 
+ and then you can put it in a file like 
+ this. 
+ It will open the chat. 
+ It also works from the exterior. 
+ Can put it anywhere. 
+ Put it here. 
+ Uh I can't click. No. Let's try 
+ from here. 
+ You see it's a 
+ permalink qri 
+ you can 
+ you can um 
+ it's like a link like a URL in in a 
+ browser. 
+ It works the same. You can also 
+ export 
+ as a zip file 
+ all the chat context 
+ and then you can import it here. 
+ Import zip. 
+ So you you have someone who worked on 
+ the same project. He can send you his 
+ session history. 
+ That's a trick. 
+ It has a hard time finding the bug. 
+ It could prove difficult to fix this. We 
+ could have to add a reproducing unit 
+ test 
+ and use LLM debug 2, which would be long 
+ and difficult. 
+ I will go to the end of this. I have 
+ decided to finish. I will finish. 
+ I will show the full session. 
+ I don't know if there are people 
+ watching such a long video, but 
+ I will do it. 
+ I want to show how it works. 
+ And it works. I programmed the whole app 
+ like this. 
+ It works. It's just that uh 
+ it's long. 
+ I mean, it's still shorter than writing 
+ by hand, 
+ but it's longer than writing with an 
+ autonomous agent, 
+ but we already talked about this. You 
+ know what I think 
+ about autonomous agents? 
+ It's just my opinion. I'm not trying to 
+ push it in your mind. I have an opinion 
+ because I tried it. 
+ Tried it. If you go on my project 
+ here, you see 
+ codeex. 
+ I used codeex for a few days. 
+ And this is where I stop. Verify code 
+ for bus integration 
+ because when it did my bus integration, 
+ it made a spaghetti code. You have no 
+ idea. 
+ It did something crazy for my RPC. 
+ It took me three weeks to repair. I 
+ never used it again. 
+ And I will never ever use it again. 
+ It took me a lot more time to fix than 
+ if I had written everything manually. 
+ Disgusting code. Disgusting. 
+ No respect. You know it doesn't respect 
+ your code. 
+ I will never use it again 
+ or code or anything like this. 
+ No, 
+ I prefer to spend time and to have a 
+ good clean architecture 
+ to detect the problems. 
+ I want to be able to maintain my work. 
+ I do complex applications. 
+ Maintenance is paramount. It's the 
+ biggest problem. 
+ There's nothing above the maintenance 
+ problem. 
+ Whatever the cost, you see, we're having 
+ a difficult session. 
+ It's five hours. I'm tired. You're 
+ tired. 
+ But when I come back in three months and 
+ I have to update this code, 
+ I will be able to update this code. 
+ I'm helping the future me to do his job. 
+ So I will stage this and not this. 
+ I will actually commit separately all 
+ this because 
+ we're getting in a 
+ in a difficult place here. So I will 
+ commit separately this fix that I'm sure 
+ is good 
+ and this fix 
+ it's a lot of code. I don't like that. 
+ If it works, okay, 
+ but if it doesn't work, I will deny 
+ this. 
+ I will refuse this patch 
+ and I will start over. 
+ So, you see it made an error. 
+ It will try to fix it. 
+ It could make it several times in a row. 
+ It's fine. Just let it be. It's normal. 
+ There's an ambiguous context. It's not 
+ its fault. 
+ It say to patch some lines, but they 
+ appear several times in the file. So, AI 
+ code denies this. You say there are 
+ multiple matches. 
+ You must give a a more accurate patch. 
+ This is very normal. 
+ It happens again here. 
+ SHP is a bit stupid. When I explain 
+ this, it doesn't understand. It needs 
+ five, six times to understand. 
+ But it's okay. There will be a chat GPT 
+ 5.3 and they will fix this problem. 
+ I'm sure they will. 
+ So it puts more context and it's still 
+ matching several time. No, it send the 
+ same. It's really stupid 
+ sending the same. When I say don't send 
+ back the same, don't resubmit the same 
+ patch or you will get the same error. 
+ What does it do? 
+ It sends the same patch. And a third 
+ time, a third time. 
+ What can I say? 
+ It's an AI. It's stupid. 
+ That's why I put all this user interface 
+ around it 
+ because it can read your code very fast. 
+ It can write code very fast, but it's 
+ stupid. 
+ And again, 
+ oh my god, 
+ I clearly say do not resubmit the same 
+ patch. I explain why. Ah, this one has a 
+ different context. 
+ Clearly say don't do it. It says the 
+ same three times. 
+ And then a shorter one. When I say send 
+ a bigger one. 
+ And again, 
+ this will make my memory explode. 
+ It's really stupid. And it sounds the 
+ same again. 
+ I don't know how to speak. 
+ It's clear. Don't resubmit the same 
+ patch or you will get the same error. 
+ Instead, load more lines and select the 
+ context containing an ensure that is 
+ unique in the file so your patch can be 
+ located and accepted. 
+ How can I be more clear than that, Mr. 
+ Shad GPT? 
+ Huh? 
+ How can I be more clear? 
+ It's stubborn, you know. It says I will 
+ try again. 
+ Okay, it found the solution. 
+ This is a classical problem. The 
+ ambicuous context, it has a hard time 
+ fighting it. 
+ I'm sure they will fix this in chat GPT 
+ 5.3. 
+ I'm sure 
+ every coding assistant must have this 
+ problem. 
+ So there is another problem here. 
+ I hope it's not crashing. 
+ It can always crash when I run it in 
+ debug mode. 
+ That looks good. 
+ It's a big patch. 
+ All right, I did a test. Okay, 
+ I did one test. 
+ I don't like this kind of code. 
+ I don't like it. 
+ I prefer if you narrow using if for 
+ switch and doing a shitty cast like 
+ this. 
+ You were right to suspect persistence, 
+ but it's not this file. Codec is 
+ isomorphic. 
+ The late persist is best effort and was 
+ swallowing failure. That's a 
+ supposition. 
+ You're not sure about this. 
+ It speaks very sure of itself, but it 
+ doesn't know it's a supposition. 
+ But okay, 
+ I agree with his fix anyway. I will keep 
+ it. even if it doesn't fix the bug 
+ because uh a try catch with a bad catch. 
+ I don't like that 
+ which is wrong here. 
+ I know why because it adds this. I told 
+ him to not add this but he does. 
+ It's okay. 
+ Let's run the test. 
+ How is the memory bad? Let's try to 
+ close everything. 
+ How is the memory better? 
+ Let's try this. 
+ Maybe I should test manually before the 
+ test. It's a bad habit I have. 
+ Probably it's smarter to test manually 
+ before the unit test. I don't know. 
+ Tell me in the comments 
+ which is better. 
+ In your opinion, 
+ okay, at least it wrote test that work. 
+ But does the program work? 
+ Where is the memory not good? 
+ This is normal. And here, 
+ let's do this. 
+ It's difficult to debug this app. It's 
+ big. 
+ To execute, it's fine, but to debug, 
+ it's uh it's painful. 
+ It's a lot of source maps. 
+ So, let's recompile this. 
+ And let's see. 
+ I hope it's saved at least in the file. 
+ Even if rehydration is not perfect, I 
+ hope uh 
+ in the JSON file 
+ we will see the the field. 
+ I don't remember the name it was 
+ input prune tokens 
+ I think. 
+ So, let's start a new chat. 
+ This is too high to ask if he likes ice 
+ cream. It's a waste. 
+ That's okay. Too late. 
+ Okay, 
+ finger crossed. 
+ Hey. 
+ So let's use this commit name. 
+ We already tested everything, linted 
+ everything. 
+ It's absolutely finished. 
+ We can remove this. 
+ It's done. 
+ It was not easy. 
+ It was not easy. 
+ 5 hours 13 minutes. 
+ So what I wanted to show you in this 
+ video 
+ is what makes AI code special because in 
+ the previous video 
+ we installed the II code 
+ and we fixed some bugs. We saw the 
+ feedback loop but it was not very 
+ powerful. Okay, 
+ in today's video we we saw some serious 
+ stuff. You saw 
+ how the ISC 
+ methodology work. Ideate specify 
+ code. 
+ You saw that ideation it's uh it took us 
+ two hours 
+ and we forgot something. We forgot to 
+ talk about rehydration. 
+ AI code uh did not tell us that we 
+ forgot. 
+ Um 
+ it was a long ideation. It was difficult 
+ to write the the initial prompt. We had 
+ a lot of argument especially because of 
+ one misunderstanding. He thought the 
+ field I wanted to show was the 
+ difference between input and input 
+ pruned and it was no it was input 
+ pruned. we wanted. It was difficult to 
+ to remove this key procco and I had to 
+ follow up several questions to pull it 
+ out of him what he really understood and 
+ then we fixed that and then um we came 
+ to a conclusion that the ideation was 
+ completed that we were ready to specify 
+ and we did that we specified 
+ it was a good specification we refined 
+ it 
+ two times because I forgot to ask 
+ something 
+ and then we refined it again in a new 
+ window to have a a long refinement. It 
+ was more than 20 minutes. 
+ Then we stopped refinement early because 
+ I wanted to make a shorter video. Even 
+ if it's long, I wanted it shorter. I 
+ could have done it five, 10 more times, 
+ spend the day doing it. Sometimes I do 
+ and I run other queries at the same 
+ time. I do several things at the same 
+ time during a refinement. But on this 
+ video I wanted to do only one thing. 
+ And then then we asked the boat to code 
+ this specification 
+ and it did so very well. 
+ And then we did 
+ the feedback loop, 
+ fixed the compilation errors, fixed the 
+ test, 
+ and then we verified using the 
+ specification verify button and we fixed 
+ again and again. We did a refine loop 
+ and then I forgot to ask him something. 
+ I asked for a refactor 
+ of 
+ the React component that shows this 
+ little item, this little progress bar. 
+ And then we tested manually. We compiled 
+ and we tested manually. And there was a 
+ bug in rehydration. We had him fix the 
+ bug. He fixed the bug. He made some 
+ regression tests. 
+ And there was another bug. We helped him 
+ a little bit. I gave him some input, 
+ some files it couldn't access. I gave 
+ him an important information for 
+ debugging and it found the second bug. 
+ It fixed it. It made some more 
+ anti-regression test. 
+ And we tested again 
+ and it worked. 
+ We have that feature. It's implemented 
+ cleanly. It's beautiful. 
+ It's modular. 
+ It's architected. 
+ It's top quality code. This kind of 
+ code, you can write half a million lines 
+ of it, half a million lines of code of 
+ this quality, and you still can maintain 
+ the app. And this is the power of AI 
+ code. You can v code, you can use an AI, 
+ and it's still maintainable even if 
+ you're working on a large complex 
+ enterprise project. And AI code, as I 
+ speak, is the only software in the world 
+ that can do this. 
+ Thank you for following along. 
+ Have a nice one.
