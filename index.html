@@ -7,7 +7,42 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>"
     />
-    <title>Services | AI Sovereign Labs</title>
+    <title>AI Sovereign Labs</title>
+    <meta
+      name="description"
+      content="AI Sovereign Labs: Artificial Intelligence at the service of the sovereign enterprise. Master your code, protect your intellectual property."
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aisovereignlabs.ai/" />
+    <meta
+      property="og:title"
+      content="AI Sovereign Labs | Sovereign Artificial Intelligence"
+    />
+    <meta
+      property="og:description"
+      content="The first sovereignty is the ability to read your own code. Discover our AI approach centered on control, auditability, and privacy."
+    />
+    <meta
+      property="og:image"
+      content="https://aisovereignlabs.ai/docs/sovereign-og.jpg"
+    />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://aisovereignlabs.ai/" />
+    <meta
+      property="twitter:title"
+      content="AI Sovereign Labs | Sovereign Artificial Intelligence"
+    />
+    <meta
+      property="twitter:description"
+      content="AI at the service of the sovereign enterprise. Reclaim control over your software infrastructure and proprietary logic."
+    />
+    <meta
+      property="twitter:image"
+      content="https://aisovereignlabs.ai/docs/sovereign-og.jpg"
+    />
+
     <style>
       @media (max-width: 600px) {
         header {
@@ -16,7 +51,7 @@
         footer {
           padding-bottom: 30px;
         }
-        .service-header {
+        .bullet-header {
           font-size: 1rem;
         }
         nav {
@@ -50,7 +85,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 40px 0;
       }
 
       footer {
@@ -66,15 +100,6 @@
         color: #ffffff;
       }
 
-      h2 {
-        font-size: 1.2rem;
-        font-weight: 500;
-        color: #ffffff;
-        margin-bottom: 2.5rem;
-        text-align: center;
-        letter-spacing: 0.02em;
-      }
-
       .slogan {
         font-family: "Courier New", Courier, monospace;
         font-size: 1rem;
@@ -82,20 +107,19 @@
         letter-spacing: 0.05em;
       }
 
-      .services-container {
-        max-width: 1300px; /* Doublé ici */
+      .bullets-container {
+        max-width: 650px;
         width: 90%;
         list-style: none;
         padding: 0;
       }
 
-      .service-item {
+      .bullet-item {
         margin-bottom: 2.5rem;
         cursor: default;
-        width: 100%;
       }
 
-      .service-header {
+      .bullet-header {
         display: flex;
         align-items: center;
         font-size: 1.1rem;
@@ -106,18 +130,50 @@
         line-height: 1.2;
       }
 
-      .service-item:hover .service-header {
+      .bullet-item:hover .bullet-header {
         border-left-color: #ffffff;
         color: #ffffff;
       }
 
-      .service-content {
+      .help-btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 15px;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+        border: 1px solid #444;
+        width: 26px;
+        height: 26px;
+        border-radius: 4px;
+        user-select: none;
+        transition: all 0.2s ease-in-out;
+        background: rgba(255, 255, 255, 0.05);
+        flex-shrink: 0;
+      }
+
+      .explanation {
+        max-height: 0;
+        overflow: hidden;
         font-size: 1rem;
         color: #999;
         padding-left: 22px;
-        margin-top: 15px;
+        margin-top: 0;
         line-height: 1.6;
-        max-width: 1200px; /* Augmenté pour permettre l'étalement */
+        max-width: 580px;
+        transition:
+          max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          margin-top 0.4s;
+        opacity: 0;
+      }
+
+      .explanation.visible {
+        max-height: 250px;
+        margin-top: 15px;
+        opacity: 1;
       }
 
       nav {
@@ -147,6 +203,7 @@
         opacity: 0.6;
       }
 
+      .help-btn:hover,
       a:not(.disabled):hover {
         color: #ffffff;
         border-color: #ffffff;
@@ -170,6 +227,19 @@
         anchor.href = "mai" + "lto" + ":" + fullAddress;
         anchor.textContent = fullAddress;
       }
+
+      function toggleHelp(id) {
+        const el = document.getElementById(id);
+        const isVisible = el.classList.contains("visible");
+        document.querySelectorAll(".explanation").forEach((e) => {
+          if (e.id !== id) e.classList.remove("visible");
+        });
+        if (isVisible) {
+          el.classList.remove("visible");
+        } else {
+          el.classList.add("visible");
+        }
+      }
     </script>
   </head>
   <body>
@@ -179,41 +249,41 @@
     </header>
 
     <main>
-      <div class="services-container">
-        <h2>Services to Enterprises</h2>
-
-        <div class="service-item">
-          <div class="service-header">
-            Large-Scale Modernization & Framework Migration
+      <div class="bullets-container">
+        <div class="bullet-item">
+          <div class="bullet-header">
+            The first sovereignty is the ability to read your own code.
+            <div class="help-btn" onclick="toggleHelp('exp1')">?</div>
           </div>
-          <div class="service-content">
-            Automated migration of legacy codebases using AICode’s dedicated
-            batching engine. We handle complex transformations such as framework
-            upgrades (e.g., Vue 2 to Vue 3, AngularJS to Angular), language
-            version jumps (e.g., Java 8 to 21), full cross-language
-            transpilation, and large-scale generation of unit tests or
-            technical/functional documentation.
-            <br /><br />
-            By leveraging proprietary tools and advanced prompt engineering
-            specifically tuned for software architecture, we automate 75% to
-            100% of the conversion process. We deliver results in record time
-            and at a fraction of the cost of manual refactoring, coordinating
-            with your internal teams for the final integration steps.
+          <div id="exp1" class="explanation">
+            AI shouldn't be a black box. If you cannot audit, understand, and
+            verify the code generated for your infrastructure, you have
+            surrendered intellectual control to the model provider.
           </div>
         </div>
 
-        <div class="service-item">
-          <div class="service-header">
-            AI Coding Solutions: Strategy, Integration & Training
+        <div class="bullet-item">
+          <div class="bullet-header">
+            The second sovereignty is the ability to hide your own code.
+            <div class="help-btn" onclick="toggleHelp('exp2')">?</div>
           </div>
-          <div class="service-content">
-            Expert intervention to deploy, configure, or fix existing AI coding
-            integrations (such as Copilot, Claude Code, Cursor, or Continue).
-            <br /><br />
-            We also provide expert assistance with prompt engineering. We can
-            also train teams to master these techniques. As the providers of a
-            professional-grade AI coding solution, we bring world-class
-            expertise to every project.
+          <div id="exp2" class="explanation">
+            Your IP is your fortress. True sovereignty means processing your
+            logic locally or in private environments, ensuring your proprietary
+            source code never trains a third-party model.
+          </div>
+        </div>
+
+        <div class="bullet-item">
+          <div class="bullet-header">
+            Claim your sovereignty.
+            <div class="help-btn" onclick="toggleHelp('exp3')">?</div>
+          </div>
+          <div id="exp3" class="explanation">
+            Sovereignty is not a constraint, it is the ultimate leverage. By
+            owning your intelligence and your infrastructure, you eliminate
+            dependency and transform your software into an impregnable strategic
+            asset.
           </div>
         </div>
       </div>
@@ -221,8 +291,8 @@
 
     <footer>
       <nav>
-        <a href="../">Home</a>
-        <a href="./" class="disabled">Services</a>
+        <a href="." class="disabled">Home</a>
+        <a href="./services/">Services</a>
         <a href="https://ai-code.ai">Main Product: AICode</a>
         <a id="contact-link" href="javascript:openContactEmail()">Contact</a>
       </nav>
