@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>"
+    />
+    <title>Services | AI Sovereign Labs</title>
+    <style>
+      @media (max-width: 600px) {
+        header {
+          padding-top: 30px;
+        }
+        footer {
+          padding-bottom: 30px;
+        }
+        .service-header {
+          font-size: 1rem;
+        }
+        nav {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+
+      body {
+        background-color: #0a0a0a;
+        color: #e5e5e5;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      header {
+        padding-top: 60px;
+        text-align: center;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 0;
+      }
+
+      footer {
+        padding-bottom: 40px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+        color: #ffffff;
+      }
+
+      h2 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: #ffffff;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        letter-spacing: 0.02em;
+      }
+
+      .slogan {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1rem;
+        color: #888;
+        letter-spacing: 0.05em;
+      }
+
+      .services-container {
+        max-width: 1300px; /* Doublé ici */
+        width: 90%;
+        list-style: none;
+        padding: 0;
+      }
+
+      .service-item {
+        margin-bottom: 2.5rem;
+        cursor: default;
+        width: 100%;
+      }
+
+      .service-header {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+        color: #ccc;
+        border-left: 2px solid #333;
+        padding-left: 20px;
+        transition: all 0.3s ease;
+        line-height: 1.2;
+      }
+
+      .service-item:hover .service-header {
+        border-left-color: #ffffff;
+        color: #ffffff;
+      }
+
+      .service-content {
+        font-size: 1rem;
+        color: #999;
+        padding-left: 22px;
+        margin-top: 15px;
+        line-height: 1.6;
+        max-width: 1200px; /* Augmenté pour permettre l'étalement */
+      }
+
+      nav {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.85rem;
+        border: 1px solid #333;
+        padding: 8px 16px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        cursor: pointer;
+      }
+
+      a.disabled {
+        color: #444;
+        border-color: #222;
+        cursor: default;
+        pointer-events: none;
+        opacity: 0.6;
+      }
+
+      a:not(.disabled):hover {
+        color: #ffffff;
+        border-color: #ffffff;
+        background-color: #222;
+      }
+
+      .legal {
+        font-size: 0.7rem;
+        color: #555;
+        font-style: italic;
+        letter-spacing: 0.01em;
+      }
+    </style>
+    <script>
+      function openContactEmail() {
+        const user = "joel";
+        const domain = "aisovereignlabs";
+        const tld = "ai";
+        const fullAddress = user + "@" + domain + "." + tld;
+        const anchor = document.getElementById("contact-link");
+        anchor.href = "mai" + "lto" + ":" + fullAddress;
+        anchor.textContent = fullAddress;
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>AI Sovereign Labs</h1>
+      <p class="slogan">AI at the service of the sovereign enterprise.</p>
+    </header>
+
+    <main>
+      <div class="services-container">
+        <h2>Services to Enterprises</h2>
+
+        <div class="service-item">
+          <div class="service-header">
+            Large-Scale Modernization & Framework Migration
+          </div>
+          <div class="service-content">
+            Automated migration of legacy codebases using AICode’s dedicated
+            batching engine. We handle complex transformations such as framework
+            upgrades (e.g., Vue 2 to Vue 3, AngularJS to Angular), language
+            version jumps (e.g., Java 8 to 21), full cross-language
+            transpilation, and large-scale generation of unit tests or
+            technical/functional documentation.
+            <br /><br />
+            By leveraging proprietary tools and advanced prompt engineering
+            specifically tuned for software architecture, we automate 75% to
+            100% of the conversion process. We deliver results in record time
+            and at a fraction of the cost of manual refactoring, coordinating
+            with your internal teams for the final integration steps.
+          </div>
+        </div>
+
+        <div class="service-item">
+          <div class="service-header">
+            AI Coding Solutions: Strategy, Integration & Training
+          </div>
+          <div class="service-content">
+            Expert intervention to deploy, configure, or fix existing AI coding
+            integrations (such as Copilot, Claude Code, Cursor, or Continue).
+            <br /><br />
+            We also provide expert assistance with prompt engineering. We can
+            also train teams to master these techniques. As the providers of a
+            professional-grade AI coding solution, we bring world-class
+            expertise to every project.
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <nav>
+        <a href="../">Home</a>
+        <a href="./" class="disabled">Services</a>
+        <a href="https://ai-code.ai">Main Product: AICode</a>
+        <a id="contact-link" href="javascript:openContactEmail()">Contact</a>
+      </nav>
+      <div class="legal">
+        AI Sovereign Labs SASU · Capital 30 000 € · 104 364 484 R.C.S. · Paris, France · © 2026
+      </div>
+    </footer>
+  </body>
+</html>
