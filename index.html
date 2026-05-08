@@ -12,6 +12,7 @@
       name="description"
       content="AI Sovereign Labs: Artificial Intelligence at the service of the sovereign enterprise. Master your code, protect your intellectual property."
     />
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://aisovereignlabs.ai/" />
     <meta
@@ -40,6 +41,7 @@
       property="twitter:image"
       content="https://aisovereignlabs.ai/docs/sovereign-og.jpg"
     />
+
     <link rel="stylesheet" href="/assets/common.css" />
     <link rel="stylesheet" href="/index.css" />
     <script defer src="/assets/common.js"></script>
@@ -47,7 +49,7 @@
   </head>
   <body>
     <div class="lang-switcher">
-      <select onchange="switchLang(this)">
+      <select onchange="switchLang(this)" aria-label="Language selection">
         <option value="en" selected>EN</option>
         <option value="fr">FR</option>
       </select>
@@ -63,7 +65,9 @@
         <div class="bullet-item">
           <div class="bullet-header">
             The first sovereignty is the ability to read your own code.
-            <div class="help-btn" onclick="toggleHelp('exp1')">?</div>
+            <button type="button" class="help-btn" onclick="toggleHelp('exp1')">
+              ?
+            </button>
           </div>
           <div id="exp1" class="explanation">
             AI shouldn't be a black box. If you cannot audit, understand, and
@@ -75,7 +79,9 @@
         <div class="bullet-item">
           <div class="bullet-header">
             The second sovereignty is the ability to hide your own code.
-            <div class="help-btn" onclick="toggleHelp('exp2')">?</div>
+            <button type="button" class="help-btn" onclick="toggleHelp('exp2')">
+              ?
+            </button>
           </div>
           <div id="exp2" class="explanation">
             Your IP is your fortress. True sovereignty means processing your
@@ -87,7 +93,9 @@
         <div class="bullet-item">
           <div class="bullet-header">
             Claim your sovereignty.
-            <div class="help-btn" onclick="toggleHelp('exp3')">?</div>
+            <button type="button" class="help-btn" onclick="toggleHelp('exp3')">
+              ?
+            </button>
           </div>
           <div id="exp3" class="explanation">
             Sovereignty is not a constraint, it is the ultimate leverage. By
