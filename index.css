@@ -1,0 +1,84 @@
+/* ========== BULLETS ========== */
+.bullets-container {
+  max-width: 650px;
+  width: 90%;
+  list-style: none;
+  padding: 0;
+}
+
+.bullet-item {
+  margin-bottom: 2.5rem;
+  cursor: default;
+}
+
+.bullet-header {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #ccc;
+  border-left: 2px solid #333;
+  padding-left: 20px;
+  transition: all 0.3s ease;
+  line-height: 1.2;
+}
+
+.bullet-item:hover .bullet-header {
+  border-left-color: #ffffff;
+  color: #ffffff;
+}
+
+/* ========== HELP BUTTON ========== */
+.help-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 15px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+  border: 1px solid #444;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+  background: rgba(255, 255, 255, 0.05);
+  flex-shrink: 0;
+}
+
+.help-btn:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: #222;
+}
+
+/* ========== EXPLANATION ========== */
+.explanation {
+  max-height: 0;
+  overflow: hidden;
+  font-size: 1rem;
+  color: #999;
+  padding-left: 22px;
+  margin-top: 0;
+  line-height: 1.6;
+  max-width: 580px;
+  transition:
+    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    margin-top 0.4s;
+  opacity: 0;
+}
+
+.explanation.visible {
+  max-height: 250px;
+  margin-top: 15px;
+  opacity: 1;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 600px) {
+  .bullet-header {
+    font-size: 1rem;
+  }
+}
