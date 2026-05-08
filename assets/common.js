@@ -21,6 +21,7 @@ function getLangFromPath() {
 }
 
 function switchLang(select) {
+  localStorage.setItem("lang-override", select.value);
   const parts = window.location.pathname.split("/").filter(Boolean);
   const hasLang = parts.length > 0 && SUPPORTED_LANGS.includes(parts[0]);
   const pathWithoutLang = hasLang ? parts.slice(1) : parts;
@@ -34,6 +35,7 @@ function switchLang(select) {
 // ========== AUTO LANG REDIRECT ===========
 (function () {
   if (getLangFromPath() !== null) return;
+  if (localStorage.getItem("lang-override") === DEFAULT_LANG) return;
   const browserLang = (navigator.language || "").slice(0, 2).toLowerCase();
   if (browserLang === DEFAULT_LANG || !SUPPORTED_LANGS.includes(browserLang))
     return;
