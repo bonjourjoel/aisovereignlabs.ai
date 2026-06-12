@@ -40,6 +40,12 @@
       content="https://aisovereignlabs.ai/docs/sovereign-og.jpg"
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
     <link rel="stylesheet" href="/assets/common.css" />
     <link rel="stylesheet" href="/services/index.css" />
     <script defer src="/assets/common.js"></script>
@@ -47,21 +53,45 @@
   </head>
 
   <body>
-    <div class="lang-switcher">
-      <select onchange="switchLang(this)" aria-label="Language selection">
-        <option value="en" selected>EN</option>
-        <option value="fr">FR</option>
-      </select>
-    </div>
+    <div class="bg-grid"><div></div></div>
+    <div class="bg-sheen"></div>
 
-    <header>
-      <h1>AI Sovereign Labs</h1>
-      <p class="slogan">AI at the service of the sovereign enterprise.</p>
+    <header class="topbar">
+      <h1 class="brand">
+        <a href="/" aria-label="AI Sovereign Labs home">
+          <svg viewBox="0 0 24 28" fill="none" aria-hidden="true">
+            <path
+              d="M12 1.5 21.5 5.2v8.1c0 6.3-4.1 11-9.5 13.2C6.6 24.3 2.5 19.6 2.5 13.3V5.2L12 1.5Z"
+              stroke="#b89a64"
+              stroke-width="1.3"
+            ></path>
+            <circle cx="12" cy="13" r="2.2" fill="#b89a64"></circle>
+          </svg>
+          AI Sovereign Labs
+        </a>
+      </h1>
+
+      <div class="topbar-right">
+        <div class="lang-switcher">
+          <select onchange="switchLang(this)" aria-label="Language selection">
+            <option value="en" selected>EN</option>
+            <option value="fr">FR</option>
+          </select>
+        </div>
+        <a class="btn-contact contact-link" href="javascript:openContactEmail()"
+          >Contact</a
+        >
+      </div>
     </header>
 
     <main>
+      <div class="hero">
+        <p class="slogan">AI at the service of the sovereign enterprise.</p>
+        <div class="hero-rule"></div>
+      </div>
+
       <div class="services-container">
-        <h2>Services to Enterprises</h2>
+        <h2 class="services-title">Services to Enterprises</h2>
 
         <div class="service-item">
           <div class="service-header">
@@ -104,12 +134,21 @@
       <nav>
         <a href="..">Home</a>
         <a href="." class="disabled">Services</a>
-        <a href="https://ai-code.ai">Main Product: AICode</a>
-        <a href="https://easy-agents.ai">EasyAgents</a>
-        <a id="contact-link" href="javascript:openContactEmail()">Contact</a>
+        <a href="https://ai-code.ai" target="_blank" rel="noopener"
+          >Main Product: AICode</a
+        >
+        <a href="https://easy-agents.ai" target="_blank" rel="noopener"
+          >EasyAgents</a
+        >
+        <a
+          id="contact-link"
+          class="contact-link"
+          href="javascript:openContactEmail()"
+          >Contact</a
+        >
       </nav>
       <div class="legal">
-        AI Sovereign Labs SASU · Capital 30 000 € · 104 364 484 R.C.S. · Paris,
+        AI Sovereign Labs SAS · Capital 30 000 € · 104 364 484 R.C.S. · Paris,
         France · © 2026
       </div>
     </footer>

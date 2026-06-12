@@ -20,7 +20,7 @@
       property="og:title"
       content="AI Sovereign Labs | Sovereign Artificial Intelligence"
     />
-    <meta
+    <meta 
       property="og:description"
       content="The first sovereignty is the ability to read your own code. Discover our AI approach centered on control, auditability, and privacy."
     />
@@ -43,6 +43,12 @@
       content="https://aisovereignlabs.ai/docs/sovereign-og.jpg"
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
     <link rel="stylesheet" href="/assets/common.css" />
     <link rel="stylesheet" href="/index.css" />
     <script defer src="/assets/common.js"></script>
@@ -50,60 +56,125 @@
   </head>
 
   <body>
-    <div class="lang-switcher">
-      <select onchange="switchLang(this)" aria-label="Language selection">
-        <option value="en" selected>EN</option>
-        <option value="fr">FR</option>
-      </select>
-    </div>
+    <!-- Animated tilted grid (motion handled in common.js) -->
+    <div class="bg-grid"><div></div></div>
+    <div class="bg-sheen"></div>
 
-    <header>
-      <h1>AI Sovereign Labs</h1>
-      <p class="slogan">AI at the service of the sovereign enterprise.</p>
+    <!-- Top bar: brand links to the site root, language combo + contact -->
+    <header class="topbar">
+      <h1 class="brand">
+        <a href="/" aria-label="AI Sovereign Labs home">
+          <svg viewBox="0 0 24 28" fill="none" aria-hidden="true">
+            <path
+              d="M12 1.5 21.5 5.2v8.1c0 6.3-4.1 11-9.5 13.2C6.6 24.3 2.5 19.6 2.5 13.3V5.2L12 1.5Z"
+              stroke="#b89a64"
+              stroke-width="1.3"
+            ></path>
+            <circle cx="12" cy="13" r="2.2" fill="#b89a64"></circle>
+          </svg>
+          AI Sovereign Labs
+        </a>
+      </h1>
+
+      <div class="topbar-right">
+        <div class="lang-switcher">
+          <select onchange="switchLang(this)" aria-label="Language selection">
+            <option value="en" selected>EN</option>
+            <option value="fr">FR</option>
+          </select>
+        </div>
+        <a
+          class="btn-contact contact-link"
+          href="javascript:openContactEmail()"
+          >Contact</a
+        >
+      </div>
     </header>
 
     <main>
-      <div class="bullets-container">
-        <div class="bullet-item">
-          <div class="bullet-header">
-            The first sovereignty is the ability to read your own code.
-            <button type="button" class="help-btn" onclick="toggleHelp('exp1')">
-              ?
-            </button>
+      <div class="hero">
+        <p class="slogan">AI at the service of the sovereign enterprise.</p>
+        <div class="hero-rule"></div>
+      </div>
+
+      <div class="cols">
+        <!-- Left: the sovereignty manifesto (click a row to reveal the detail) -->
+        <div class="manifesto bullets-container">
+          <div class="bullet-item">
+            <div class="bullet-header">
+              The first sovereignty is the ability to read your own code.
+              <button
+                type="button"
+                class="help-btn"
+                data-exp-btn="exp1" tabindex="-1"
+              >
+                ?
+              </button>
+            </div>
+            <div id="exp1" class="explanation">
+              AI shouldn't be a black box. If you cannot audit, understand, and
+              verify the code generated for your infrastructure, you have
+              surrendered intellectual control to the model provider.
+            </div>
           </div>
-          <div id="exp1" class="explanation">
-            AI shouldn't be a black box. If you cannot audit, understand, and
-            verify the code generated for your infrastructure, you have
-            surrendered intellectual control to the model provider.
+
+          <div class="bullet-item">
+            <div class="bullet-header">
+              The second sovereignty is the ability to hide your own code.
+              <button
+                type="button"
+                class="help-btn"
+                data-exp-btn="exp2" tabindex="-1"
+              >
+                ?
+              </button>
+            </div>
+            <div id="exp2" class="explanation">
+              Your IP is your fortress. True sovereignty means processing your
+              logic locally or in private environments, ensuring your
+              proprietary source code never trains a third-party model.
+            </div>
+          </div>
+
+          <div class="bullet-item">
+            <div class="bullet-header">
+              Claim your sovereignty.
+              <button
+                type="button"
+                class="help-btn"
+                data-exp-btn="exp3" tabindex="-1"
+              >
+                ?
+              </button>
+            </div>
+            <div id="exp3" class="explanation">
+              Sovereignty is not a constraint, it is the ultimate leverage. By
+              owning your intelligence and your infrastructure, you eliminate
+              dependency and transform your software into an impregnable
+              strategic asset.
+            </div>
           </div>
         </div>
 
-        <div class="bullet-item">
-          <div class="bullet-header">
-            The second sovereignty is the ability to hide your own code.
-            <button type="button" class="help-btn" onclick="toggleHelp('exp2')">
-              ?
-            </button>
-          </div>
-          <div id="exp2" class="explanation">
-            Your IP is your fortress. True sovereignty means processing your
-            logic locally or in private environments, ensuring your proprietary
-            source code never trains a third-party model.
-          </div>
-        </div>
+        <!-- Right: the two things that matter most — Services and Products -->
+        <div class="offer">
+          <a class="offer-card" href="/services">
+            <div class="offer-kicker">Services</div>
+            <div class="offer-title">Services to Enterprises</div>
+            <div class="offer-sub">→</div>
+          </a>
 
-        <div class="bullet-item">
-          <div class="bullet-header">
-            Claim your sovereignty.
-            <button type="button" class="help-btn" onclick="toggleHelp('exp3')">
-              ?
-            </button>
-          </div>
-          <div id="exp3" class="explanation">
-            Sovereignty is not a constraint, it is the ultimate leverage. By
-            owning your intelligence and your infrastructure, you eliminate
-            dependency and transform your software into an impregnable strategic
-            asset.
+          <div class="offer-card offer-products">
+            <div class="offer-kicker">Products</div>
+            <a class="product-row" href="https://ai-code.ai" target="_blank" rel="noopener">
+              <span class="pr-name">Main Product: AICode</span>
+              <span class="pr-arrow">→</span>
+            </a>
+            <div class="product-divider"></div>
+            <a class="product-row" href="https://easy-agents.ai" target="_blank" rel="noopener">
+              <span class="pr-name">EasyAgents</span>
+              <span class="pr-arrow">→</span>
+            </a>
           </div>
         </div>
       </div>
@@ -113,12 +184,17 @@
       <nav>
         <a href="." class="disabled">Home</a>
         <a href="./services">Services</a>
-        <a href="https://ai-code.ai">Main Product: AICode</a>
-        <a href="https://easy-agents.ai">EasyAgents</a>
-        <a id="contact-link" href="javascript:openContactEmail()">Contact</a>
+        <a href="https://ai-code.ai" target="_blank" rel="noopener">Main Product: AICode</a>
+        <a href="https://easy-agents.ai" target="_blank" rel="noopener">EasyAgents</a>
+        <a
+          id="contact-link"
+          class="contact-link"
+          href="javascript:openContactEmail()"
+          >Contact</a
+        >
       </nav>
       <div class="legal">
-        AI Sovereign Labs SASU · Capital 30 000 € · 104 364 484 R.C.S. · Paris,
+        AI Sovereign Labs SAS · Capital 30 000 € · 104 364 484 R.C.S. · Paris,
         France · © 2026
       </div>
     </footer>

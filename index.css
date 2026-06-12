@@ -1,85 +1,189 @@
-/* ========== BULLETS ========== */
+/* ========== HOME LAYOUT ========== */
+/* Hero is centered; the two columns (manifesto + offer) are equal width. */
+.hero {
+  margin-bottom: 8px;
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  margin-top: 38px;
+  align-items: start;
+}
+
+/* ========== MANIFESTO BULLETS (click-to-reveal preserved) ========== */
 .bullets-container {
-  max-width: 650px;
-  width: 90%;
-  list-style: none;
   padding: 0;
 }
 
 .bullet-item {
-  margin-bottom: 2.5rem;
-  cursor: default;
+  cursor: pointer;
+}
+
+.bullet-item + .bullet-item {
+  margin-top: 22px;
 }
 
 .bullet-header {
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
-  color: #ccc;
-  border-left: 2px solid #333;
-  padding-left: 20px;
+  justify-content: space-between;
+  gap: 14px;
+  font-family: "Spectral", serif;
+  font-size: 15.5px;
+  line-height: 1.4;
+  color: #cfcdc5;
+  border-left: 2px solid rgba(184, 154, 100, 0.4);
+  padding-left: 18px;
   transition: all 0.3s ease;
-  line-height: 1.2;
 }
 
 .bullet-item:hover .bullet-header {
-  border-left-color: #ffffff;
-  color: #ffffff;
+  border-left-color: var(--gold);
+  color: #f6f4ec;
 }
 
 /* ========== HELP BUTTON ========== */
 .help-btn {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 15px;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: #aaa;
-  cursor: pointer;
-  border: 1px solid #444;
-  padding: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 4px;
-  user-select: none;
-  transition: all 0.2s ease-in-out;
-  background: rgba(255, 255, 255, 0.05);
   flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gold);
+  background: transparent;
+  border: 1px solid rgba(184, 154, 100, 0.4);
+  border-radius: 4px;
+  padding: 0;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.25s ease;
 }
 
-.help-btn:hover {
-  color: #ffffff;
-  border-color: #ffffff;
-  background-color: #222;
+.bullet-item:hover .help-btn {
+  border-color: var(--gold);
+  color: #0a0d13;
+  background: var(--gold);
 }
 
-/* ========== EXPLANATION ========== */
+/* ========== EXPLANATION (toggled by index.js → .visible) ========== */
 .explanation {
   max-height: 0;
   overflow: hidden;
-  font-size: 1rem;
-  color: #999;
-  padding-left: 22px;
-  margin-top: 0;
-  line-height: 1.6;
-  max-width: 580px;
-  transition:
-    max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-    margin-top 0.4s;
   opacity: 0;
+  margin-top: 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  padding-left: 20px;
+  max-width: 600px;
+  transition:
+    max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease,
+    margin-top 0.45s ease;
 }
 
 .explanation.visible {
-  max-height: 250px;
-  margin-top: 15px;
+  max-height: 240px;
   opacity: 1;
+  margin-top: 12px;
+}
+
+/* ========== OFFER: SERVICES + PRODUCTS ========== */
+.offer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.offer-card {
+  display: block;
+  padding: 20px 22px;
+  border: 1px solid rgba(184, 154, 100, 0.26);
+  border-radius: 7px;
+  background: rgba(184, 154, 100, 0.035);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+a.offer-card:hover {
+  border-color: rgba(184, 154, 100, 0.55);
+  background: rgba(184, 154, 100, 0.07);
+  transform: translateY(-2px);
+}
+
+.offer-kicker {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 9px;
+}
+
+.offer-title {
+  font-family: "Spectral", serif;
+  font-size: 19px;
+  color: #f1efe9;
+  margin-bottom: 5px;
+}
+
+.offer-sub {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11.5px;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+}
+
+.offer-products .offer-kicker {
+  margin-bottom: 14px;
+}
+
+.product-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px;
+  margin: 0 -12px;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.product-row:hover {
+  background: rgba(184, 154, 100, 0.08);
+}
+
+.pr-name {
+  font-family: "Spectral", serif;
+  font-size: 16px;
+  color: #eceae3;
+}
+
+.pr-arrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.product-divider {
+  height: 1px;
+  background: rgba(184, 154, 100, 0.12);
+  margin: 4px 0;
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 600px) {
-  .bullet-header {
-    font-size: 1rem;
+@media (max-width: 760px) {
+  .cols {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 28px;
   }
 }

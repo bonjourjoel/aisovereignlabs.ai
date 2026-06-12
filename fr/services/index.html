@@ -10,7 +10,7 @@
     <title>Services | AI Sovereign Labs</title>
     <meta
       name="description"
-      content="Large-scale legacy modernization and AI coding strategy. We automate 75–100% of migration processes using AICode's dedicated batching engine."
+      content="Modernisation de code legacy à grande échelle et stratégie de codage IA. Nous automatisons 75 à 100 % des processus de migration grâce au moteur de traitement par lots dédié d'AICode."
     />
 
     <!-- Social URLs stay bound to the English services page in the source HTML. -->
@@ -19,7 +19,7 @@
     <meta property="og:title" content="Services | AI Sovereign Labs" />
     <meta
       property="og:description"
-      content="Large-scale legacy modernization and AI coding strategy. We automate 75–100% of migration processes using AICode's batching engine."
+      content="Modernisation de code legacy à grande échelle et stratégie de codage IA. Nous automatisons 75 à 100 % des processus de migration grâce au moteur de traitement par lots d'AICode."
     />
     <meta
       property="og:image"
@@ -33,13 +33,19 @@
     <meta property="twitter:title" content="Services | AI Sovereign Labs" />
     <meta
       property="twitter:description"
-      content="Large-scale legacy modernization and AI coding strategy. We automate 75–100% of migration processes using AICode's batching engine."
+      content="Modernisation de code legacy à grande échelle et stratégie de codage IA. Nous automatisons 75 à 100 % des processus de migration grâce au moteur de traitement par lots d'AICode."
     />
     <meta
       property="twitter:image"
       content="https://aisovereignlabs.ai/docs/sovereign-og.jpg"
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
     <link rel="stylesheet" href="/assets/common.css" />
     <link rel="stylesheet" href="/services/index.css" />
     <script defer src="/assets/common.js"></script>
@@ -47,21 +53,45 @@
   </head>
 
   <body>
-    <div class="lang-switcher">
-      <select onchange="switchLang(this)" aria-label="Language selection">
-        <option value="en" selected>EN</option>
-        <option value="fr">FR</option>
-      </select>
-    </div>
+    <div class="bg-grid"><div></div></div>
+    <div class="bg-sheen"></div>
 
-    <header>
-      <h1>AI Sovereign Labs</h1>
-      <p class="slogan">L'IA au service de l'entreprise souveraine.</p>
+    <header class="topbar">
+      <h1 class="brand">
+        <a href="/fr/" aria-label="Accueil AI Sovereign Labs">
+          <svg viewBox="0 0 24 28" fill="none" aria-hidden="true">
+            <path
+              d="M12 1.5 21.5 5.2v8.1c0 6.3-4.1 11-9.5 13.2C6.6 24.3 2.5 19.6 2.5 13.3V5.2L12 1.5Z"
+              stroke="#b89a64"
+              stroke-width="1.3"
+            ></path>
+            <circle cx="12" cy="13" r="2.2" fill="#b89a64"></circle>
+          </svg>
+          AI Sovereign Labs
+        </a>
+      </h1>
+
+      <div class="topbar-right">
+        <div class="lang-switcher">
+          <select onchange="switchLang(this)" aria-label="Language selection">
+            <option value="en">EN</option>
+            <option value="fr" selected>FR</option>
+          </select>
+        </div>
+        <a class="btn-contact contact-link" href="javascript:openContactEmail()"
+          >Contact</a
+        >
+      </div>
     </header>
 
     <main>
+      <div class="hero">
+        <p class="slogan">L'IA au service de l'entreprise souveraine.</p>
+        <div class="hero-rule"></div>
+      </div>
+
       <div class="services-container">
-        <h2>Services aux Entreprises</h2>
+        <h2 class="services-title">Services aux Entreprises</h2>
 
         <div class="service-item">
           <div class="service-header">
@@ -72,11 +102,12 @@
             traitement par lots dédié d'AICode. Nous gérons des transformations complexes telles que les
             mises à niveau de frameworks (ex. : Vue 2 vers Vue 3, AngularJS vers Angular), les sauts de
             versions de langage (ex. : Java 8 vers 21), la transpilation complète entre langages,
-            et la génération à grande échelle de tests unitaires ou de documentation technique/fonctionnelle.
+            et la génération à grande échelle de tests unitaires ou de documentation
+            technique/fonctionnelle.
             <br /><br />
             En s'appuyant sur des outils propriétaires et une ingénierie de prompts avancée
-            spécifiquement adaptée à l'architecture logicielle, nous automatisons 75% à
-            100% du processus de conversion. Nous livrons des résultats en un temps record
+            spécifiquement adaptée à l'architecture logicielle, nous automatisons 75 % à
+            100 % du processus de conversion. Nous livrons des résultats en un temps record
             et à une fraction du coût d'un refactoring manuel, en coordination
             avec vos équipes internes pour les étapes d'intégration finale.
           </div>
@@ -103,12 +134,21 @@
       <nav>
         <a href="..">Accueil</a>
         <a href="." class="disabled">Services</a>
-        <a href="https://ai-code.ai">Produit principal : AICode</a>
-        <a href="https://easy-agents.ai">EasyAgents</a>
-        <a id="contact-link" href="javascript:openContactEmail()">Contact</a>
+        <a href="https://ai-code.ai" target="_blank" rel="noopener"
+          >Produit principal : AICode</a
+        >
+        <a href="https://easy-agents.ai" target="_blank" rel="noopener"
+          >EasyAgents</a
+        >
+        <a
+          id="contact-link"
+          class="contact-link"
+          href="javascript:openContactEmail()"
+          >Contact</a
+        >
       </nav>
       <div class="legal">
-        AI Sovereign Labs SASU · Capital 30 000 € · 104 364 484 R.C.S. · Paris,
+        AI Sovereign Labs SAS · Capital 30 000 € · 104 364 484 R.C.S. · Paris,
         France · © 2026
       </div>
     </footer>
