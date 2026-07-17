@@ -26,34 +26,57 @@ function getLangFromPath() {
     : null;
 }
 
+function getStoredLangOverride() {
+  const storedLang = localStorage.getItem("lang-override");
+
+  // Ignore unsupported values so the public site always resolves to a known language tree.
+  return SUPPORTED_LANGS.includes(storedLang) ? storedLang : null;
+}
+
+function buildLocalizedPath(lang, pathWithoutLang) {
+  const suffix =
+    pathWithoutLang.length > 0 ? "/" + pathWithoutLang.join("/") : "/";
+  const localizedPath = lang === DEFAULT_LANG ? suffix : "/" + lang + suffix;
+
+  // Preserve query parameters and anchors so the language pin survives any entry point.
+  return localizedPath + window.location.search + window.location.hash;
+}
+
 function switchLang(select) {
   localStorage.setItem("lang-override", select.value);
   const parts = window.location.pathname.split("/").filter(Boolean);
   const hasLang = parts.length > 0 && SUPPORTED_LANGS.includes(parts[0]);
   const pathWithoutLang = hasLang ? parts.slice(1) : parts;
-  const suffix =
-    pathWithoutLang.length > 0 ? "/" + pathWithoutLang.join("/") : "/";
-  const newPath =
-    select.value === DEFAULT_LANG ? suffix : "/" + select.value + suffix;
+  const newPath = buildLocalizedPath(select.value, pathWithoutLang);
   window.location.href = newPath;
 }
 
 // ========== AUTO LANG REDIRECT ===========
 (function () {
-  if (getLangFromPath() !== null) return;
-  if (localStorage.getItem("lang-override") === DEFAULT_LANG) return;
+  const parts = window.location.pathname.split("/").filter(Boolean);
+  const currentLang = getLangFromPath();
+  const pathWithoutLang = currentLang !== null ? parts.slice(1) : parts;
+  const storedLang = getStoredLangOverride();
+
+  // Once the user selected a language manually, keep that language pinned on every visit.
+  if (storedLang !== null) {
+    if (storedLang === currentLang) return;
+    window.location.replace(buildLocalizedPath(storedLang, pathWithoutLang));
+    return;
+  }
+
+  if (currentLang !== null) return;
   const browserLang = (navigator.language || "").slice(0, 2).toLowerCase();
   if (browserLang === DEFAULT_LANG || !SUPPORTED_LANGS.includes(browserLang))
     return;
-  const parts = window.location.pathname.split("/").filter(Boolean);
-  const suffix = parts.length > 0 ? "/" + parts.join("/") : "/";
-  window.location.replace("/" + browserLang + suffix);
+  window.location.replace(buildLocalizedPath(browserLang, pathWithoutLang));
 })();
 
 // ========== LANG SWITCHER INIT ===========
 document.addEventListener("DOMContentLoaded", function () {
   const sel = document.querySelector(".lang-switcher select");
-  if (sel) sel.value = getLangFromPath() || DEFAULT_LANG;
+  if (sel)
+    sel.value = getStoredLangOverride() || getLangFromPath() || DEFAULT_LANG;
 });
 
 // ========== BACKGROUND GRID ANIMATION ===========
@@ -73,7 +96,8 @@ document.addEventListener("DOMContentLoaded", function () {
       outer.style.transform = "rotate(-9deg) scale(" + breath.toFixed(4) + ")";
       if (inner) {
         const p = ((t / 16) % 1) * 72;
-        inner.style.backgroundPosition = p.toFixed(2) + "px " + p.toFixed(2) + "px";
+        inner.style.backgroundPosition =
+          p.toFixed(2) + "px " + p.toFixed(2) + "px";
       }
       if (sheen) {
         const s = Math.sin((t * 2 * Math.PI) / 17);
