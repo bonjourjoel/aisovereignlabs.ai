@@ -60,8 +60,15 @@ function switchLang(select) {
 
   // Once the user selected a language manually, keep that language pinned on every visit.
   if (storedLang !== null) {
-    if (storedLang === currentLang) return;
-    window.location.replace(buildLocalizedPath(storedLang, pathWithoutLang));
+    const desiredStoredPath = buildLocalizedPath(storedLang, pathWithoutLang);
+    const currentFullPath =
+      window.location.pathname + window.location.search + window.location.hash;
+
+    // English uses the bare root path, so compare against the rebuilt absolute target
+    // instead of relying on `currentLang`, which is null on canonical English URLs.
+    if (desiredStoredPath === currentFullPath) return;
+
+    window.location.replace(desiredStoredPath);
     return;
   }
 
