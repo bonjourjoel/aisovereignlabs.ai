@@ -1,20 +1,3 @@
-// ========== CONTACT EMAIL ===========
-// Two-step reveal preserved: the first click reveals the address on every
-// contact link (and switches them to a mailto:), the second click opens it.
-// Updates ALL anchors marked .contact-link so the top-bar button and the
-// footer link both work.
-function openContactEmail() {
-  const user = "joel";
-  const domain = "aisovereignlabs";
-  const tld = "ai";
-  const fullAddress = user + "@" + domain + "." + tld;
-  const links = document.querySelectorAll("a.contact-link");
-  links.forEach(function (anchor) {
-    anchor.href = "mai" + "lto" + ":" + fullAddress;
-    anchor.textContent = fullAddress;
-  });
-}
-
 // ========== LANG UTILS ===========
 const SUPPORTED_LANGS = ["en", "fr"];
 const DEFAULT_LANG = "en";
