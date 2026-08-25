@@ -52,8 +52,18 @@ function switchLang(select) {
 
 // ========== AUTO LANG REDIRECT ===========
 (function () {
+  const currentLang = getLangFromPath();
   const pathWithoutLangSuffix = getPathWithoutLangSuffix();
   const storedLang = getStoredLangOverride();
+
+  // When the URL already carries a supported language prefix, that explicit
+  // destination wins over any stale domain-local preference stored earlier.
+  if (currentLang !== null) {
+    if (storedLang !== currentLang) {
+      localStorage.setItem("lang-override", currentLang);
+    }
+    return;
+  }
 
   // Once the user selected a language manually, keep that language pinned on every visit.
   if (storedLang !== null) {
@@ -72,7 +82,6 @@ function switchLang(select) {
     return;
   }
 
-  if (getLangFromPath() !== null) return;
   const browserLang = (navigator.language || "").slice(0, 2).toLowerCase();
   if (browserLang === DEFAULT_LANG || !SUPPORTED_LANGS.includes(browserLang))
     return;
