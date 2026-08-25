@@ -163,9 +163,16 @@
           </div>
         </div>
 
-        <!-- Right: the two things that matter most — Services and Produits -->
+        <!-- Right: research comes first, then services, then products. -->
         <div class="offer">
-          <a class="offer-card" href="/fr/services">
+          <!-- Recherche stays separate from Produits so new publications can scale as cards later. -->
+          <a class="offer-card offer-nav-card" href="/fr/research">
+            <div class="offer-kicker">Recherche</div>
+            <div class="offer-title">Études de cas &amp; publications</div>
+            <div class="offer-sub">→</div>
+          </a>
+
+          <a class="offer-card offer-nav-card" href="/fr/services">
             <div class="offer-kicker">Services</div>
             <div class="offer-title">Services aux Entreprises</div>
             <div class="offer-sub">→</div>
@@ -179,7 +186,7 @@
               target="_blank"
               rel="noopener"
             >
-              <span class="pr-name">Produit principal : AICode</span>
+              <span class="pr-name">AICode</span>
               <span class="pr-arrow">→</span>
             </a>
             <div class="product-divider"></div>
@@ -200,10 +207,9 @@
     <footer>
       <nav>
         <a href="." class="disabled">Accueil</a>
+        <a href="./research">Recherche</a>
         <a href="./services">Services</a>
-        <a href="https://ai-code.ai/fr/" target="_blank" rel="noopener"
-          >Produit principal : AICode</a
-        >
+        <a href="https://ai-code.ai/fr/" target="_blank" rel="noopener">AICode</a>
         <a href="https://easy-agents.ai/fr/" target="_blank" rel="noopener"
           >EasyAgents</a
         >

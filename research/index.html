@@ -7,19 +7,19 @@
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>"
     />
-    <title>Services | AI Sovereign Labs</title>
+    <title>Research | AI Sovereign Labs</title>
     <meta
       name="description"
-      content="Large-scale legacy modernization and AI coding strategy. We automate 75–100% of migration processes using AICode's dedicated batching engine."
+      content="Research from AI Sovereign Labs. Read our arXiv case study on specification-first convergence with an AI coding agent."
     />
 
-    <!-- Social URLs stay bound to the English services page in the source HTML. -->
+    <!-- Social URLs stay bound to the English research page in the source HTML. -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://aisovereignlabs.ai/services/" />
-    <meta property="og:title" content="Services | AI Sovereign Labs" />
+    <meta property="og:url" content="https://aisovereignlabs.ai/research/" />
+    <meta property="og:title" content="Research | AI Sovereign Labs" />
     <meta
       property="og:description"
-      content="Large-scale legacy modernization and AI coding strategy. We automate 75–100% of migration processes using AICode's batching engine."
+      content="Research from AI Sovereign Labs. Read our arXiv case study on specification-first convergence with an AI coding agent."
     />
     <meta
       property="og:image"
@@ -28,12 +28,12 @@
     <meta property="twitter:card" content="summary_large_image" />
     <meta
       property="twitter:url"
-      content="https://aisovereignlabs.ai/services/"
+      content="https://aisovereignlabs.ai/research/"
     />
-    <meta property="twitter:title" content="Services | AI Sovereign Labs" />
+    <meta property="twitter:title" content="Research | AI Sovereign Labs" />
     <meta
       property="twitter:description"
-      content="Large-scale legacy modernization and AI coding strategy. We automate 75–100% of migration processes using AICode's batching engine."
+      content="Research from AI Sovereign Labs. Read our arXiv case study on specification-first convergence with an AI coding agent."
     />
     <meta
       property="twitter:image"
@@ -47,9 +47,9 @@
       href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
     />
     <link rel="stylesheet" href="/assets/common.css" />
-    <link rel="stylesheet" href="/services/index.css" />
+    <link rel="stylesheet" href="/research/index.css" />
     <script defer src="/assets/common.js"></script>
-    <script defer src="/services/index.js"></script>
+    <script defer src="/research/index.js"></script>
   </head>
 
   <body>
@@ -91,45 +91,40 @@
     </header>
 
     <main>
-      <div class="services-container">
-        <h2 class="services-title">Services to Enterprises</h2>
-        <div class="hero-rule services-rule"></div>
+      <div class="research-container">
+        <h2 class="research-title">Research</h2>
+        <div class="hero-rule research-rule"></div>
 
-        <div class="service-item">
-          <div class="service-header">
-            Large-Scale Modernization & Framework Migration
-          </div>
-          <div class="service-content">
-            Automated migration of legacy codebases using AICode's dedicated
-            batching engine. We handle complex transformations such as framework
-            upgrades (e.g., Vue 2 to Vue 3, AngularJS to Angular), language
-            version jumps (e.g., Java 8 to 21), full cross-language
-            transpilation, and large-scale generation of unit tests or
-            technical/functional documentation.
-            <br /><br />
-            By leveraging proprietary tools and advanced prompt engineering
-            specifically tuned for software architecture, we automate 75% to
-            100% of the conversion process. We deliver results in record time
-            and at a fraction of the cost of manual refactoring, coordinating
-            with your internal teams for the final integration steps.
-          </div>
-        </div>
-
-        <div class="service-item">
-          <div class="service-header">
-            AI Coding Solutions: Strategy, Integration & Training
-          </div>
-          <div class="service-content">
-            Expert intervention to deploy, configure, or fix existing AI coding
-            integrations (such as Copilot, Claude Code, Cursor, or Continue),
-            run security audits, and recover legacy codebases without a
-            historical maintainer.
-            <br /><br />
-            We also provide expert assistance with prompt engineering. We can
-            also train teams to master these techniques. As the providers of a
-            professional-grade AI coding solution, we bring world-class
-            expertise to every project.
-          </div>
+        <!-- The list wrapper stays in place so additional publications can be appended as sibling cards later. -->
+        <div class="research-list">
+          <article class="research-item">
+            <div class="research-kicker">Case study</div>
+            <h3 class="research-header">
+              Specification-first convergence with an AI coding agent: a case
+              study of dismantling a core architectural invariant across 189
+              files in a 717k-line codebase with no test oracle and no human
+              code review
+            </h3>
+            <div class="research-meta">
+              <p class="research-meta-line">31 July 2026</p>
+              <p class="research-meta-line">
+                Joël Abenhaïm, AI Sovereign Labs, Paris, France
+              </p>
+            </div>
+            <p class="research-content">
+              In the following case study, AICode rebuilds a core system
+              invariant in just three days, with minimal human input, running 31
+              verification passes and correcting 201 errors, before shipping
+              code with zero bugs, zero regressions, and zero technical debt.
+            </p>
+            <a
+              class="research-link"
+              href="https://arxiv.org/abs/2608.12440"
+              target="_blank"
+              rel="noopener"
+              >↗ Read on arXiv</a
+            >
+          </article>
         </div>
       </div>
     </main>
@@ -137,8 +132,8 @@
     <footer>
       <nav>
         <a href="..">Home</a>
-        <a href="../research">Research</a>
-        <a href="." class="disabled">Services</a>
+        <a href="." class="disabled">Research</a>
+        <a href="../services">Services</a>
         <a href="https://ai-code.ai" target="_blank" rel="noopener">AICode</a>
         <a href="https://easy-agents.ai" target="_blank" rel="noopener"
           >EasyAgents</a

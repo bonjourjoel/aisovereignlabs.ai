@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛡️</text></svg>"
+    />
+    <title>Recherche | AI Sovereign Labs</title>
+    <meta
+      name="description"
+      content="Travaux d'AI Sovereign Labs. Lisez notre étude de cas arXiv sur la convergence pilotée par spécification avec un agent de codage IA."
+    />
+
+    <!-- Social URLs stay bound to the English research page in the source HTML. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://aisovereignlabs.ai/fr/research/" />
+    <meta property="og:title" content="Recherche | AI Sovereign Labs" />
+    <meta
+      property="og:description"
+      content="Travaux d'AI Sovereign Labs. Lisez notre étude de cas arXiv sur la convergence pilotée par spécification avec un agent de codage IA."
+    />
+    <meta
+      property="og:image"
+      content="https://aisovereignlabs.ai/docs/sovereign-og.jpg"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:url"
+      content="https://aisovereignlabs.ai/fr/research/"
+    />
+    <meta property="twitter:title" content="Recherche | AI Sovereign Labs" />
+    <meta
+      property="twitter:description"
+      content="Travaux d'AI Sovereign Labs. Lisez notre étude de cas arXiv sur la convergence pilotée par spécification avec un agent de codage IA."
+    />
+    <meta
+      property="twitter:image"
+      content="https://aisovereignlabs.ai/docs/sovereign-og.jpg"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="/assets/common.css" />
+    <link rel="stylesheet" href="/research/index.css" />
+    <script defer src="/assets/common.js"></script>
+    <script defer src="/research/index.js"></script>
+  </head>
+
+  <body>
+    <div class="bg-grid">
+      <div></div>
+    </div>
+    <div class="bg-sheen"></div>
+
+    <header class="topbar">
+      <h1 class="brand">
+        <a href="/fr/" aria-label="Accueil AI Sovereign Labs">
+          <svg viewBox="0 0 24 28" fill="none" aria-hidden="true">
+            <path
+              d="M12 1.5 21.5 5.2v8.1c0 6.3-4.1 11-9.5 13.2C6.6 24.3 2.5 19.6 2.5 13.3V5.2L12 1.5Z"
+              stroke="#b89a64"
+              stroke-width="1.3"
+            ></path>
+            <circle cx="12" cy="13" r="2.2" fill="#b89a64"></circle>
+          </svg>
+          AI Sovereign Labs
+        </a>
+      </h1>
+
+      <div class="topbar-right">
+        <div class="lang-switcher">
+          <select onchange="switchLang(this)" aria-label="Language selection">
+            <option value="en">EN</option>
+            <option value="fr" selected>FR</option>
+          </select>
+        </div>
+        <a
+          class="btn-contact contact-link"
+          href="https://aisovereignlabs.zohodesk.eu"
+          target="_blank"
+          rel="noopener"
+          >Support</a
+        >
+      </div>
+    </header>
+
+    <main>
+      <div class="research-container">
+        <h2 class="research-title">Recherche</h2>
+        <div class="hero-rule research-rule"></div>
+
+        <!-- The list wrapper stays in place so additional publications can be appended as sibling cards later. -->
+        <div class="research-list">
+          <article class="research-item">
+            <div class="research-kicker">Étude de cas</div>
+            <h3 class="research-header">
+              Specification-first convergence with an AI coding agent: a case
+              study of dismantling a core architectural invariant across 189
+              files in a 717k-line codebase with no test oracle and no human
+              code review
+            </h3>
+            <div class="research-meta">
+              <p class="research-meta-line">31 July 2026</p>
+              <p class="research-meta-line">
+                Joël Abenhaïm, AI Sovereign Labs, Paris, France
+              </p>
+            </div>
+            <p class="research-content">
+              Dans l'étude de cas suivante, AICode reconstruit un invariant central du système
+              en seulement trois jours, avec une intervention humaine minimale, effectuant 31
+              passes de vérification et corrigeant 201 erreurs, avant de livrer
+              un code avec zéro bug, zéro régression et zéro dette technique.
+            </p>
+            <a
+              class="research-link"
+              href="https://arxiv.org/abs/2608.12440"
+              target="_blank"
+              rel="noopener"
+              >↗ Lire sur arXiv</a
+            >
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <nav>
+        <a href="..">Accueil</a>
+        <a href="." class="disabled">Recherche</a>
+        <a href="../services">Services</a>
+        <a href="https://ai-code.ai/fr/" target="_blank" rel="noopener">AICode</a>
+        <a href="https://easy-agents.ai/fr/" target="_blank" rel="noopener"
+          >EasyAgents</a
+        >
+        <a
+          id="contact-link"
+          class="contact-link"
+          href="https://aisovereignlabs.zohodesk.eu"
+          target="_blank"
+          rel="noopener"
+          >Support</a
+        >
+      </nav>
+      <div class="legal">
+        AI Sovereign Labs SAS · Capital 30 000 € · 104 364 484 R.C.S. · Paris,
+        France · © 2026
+      </div>
+    </footer>
+  </body>
+</html>
