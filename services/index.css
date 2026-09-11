@@ -2,8 +2,9 @@
 /* Content runs longer than one screen here, so align to the top and scroll. */
 main {
   justify-content: flex-start;
-  padding-top: 36px;
-  padding-bottom: 48px;
+  /* The shared header is now fixed, so the services content starts below the sticky shell. */
+  padding-top: calc(4rem + 2.25rem);
+  padding-bottom: 3rem;
 }
 
 .services-title {

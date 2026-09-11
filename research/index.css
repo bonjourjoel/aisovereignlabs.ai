@@ -2,7 +2,8 @@
 /* The page follows the services layout so new publication cards can stack cleanly in the same frame. */
 main {
   justify-content: flex-start;
-  padding-top: 2.25rem;
+  /* The shared header is now fixed, so the research content starts below the sticky shell. */
+  padding-top: calc(4rem + 2.25rem);
   padding-bottom: 3rem;
 }
 
