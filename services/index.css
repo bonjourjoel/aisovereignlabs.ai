@@ -21,6 +21,16 @@ main {
   margin-bottom: 1.75rem;
 }
 
+/* Keep the positioning statement narrow and readable before the two offer cards. */
+.services-intro {
+  max-width: 48rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-dim);
+}
+
 .services-container {
   width: 100%;
   max-width: 1000px;
@@ -65,6 +75,30 @@ main {
   max-width: 920px;
 }
 
+/* Separate the contact invitation from the service cards without introducing a third offer block. */
+.services-cta {
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+/* Use the serif display voice again so the call to action reads like a closing prompt. */
+.services-cta-question {
+  margin: 0 0 1rem;
+  font-family: "Spectral", serif;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  line-height: 1.35;
+  color: var(--text);
+}
+
+/* Keep the CTA link aligned like a compact button even if the shared button styles evolve. */
+.services-cta-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 760px) {
   .service-item {
@@ -73,5 +107,14 @@ main {
 
   .service-content {
     padding-left: 14px;
+  }
+
+  .services-intro {
+    margin-bottom: 1.75rem;
+  }
+
+  .services-cta {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
   }
 }
